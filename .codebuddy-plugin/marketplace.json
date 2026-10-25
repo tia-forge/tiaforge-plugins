@@ -1,0 +1,16 @@
+{
+  "name": "tia-forge",
+  "owner": {
+    "name": "汇智网 (hubwiz.com)",
+    "email": "support@hubwiz.com"
+  },
+  "description": "TIA Forge —— 西门子博途（TIA Portal）工程自动化：查文档、生成梯形图块、云端仿真验证、在真实工程里编译下载读回。",
+  "plugins": [
+    {
+      "name": "tiaforge",
+      "source": "./plugins/tiaforge",
+      "description": "博途工程自动化的四个技能 + 斜杠指令：tia-portal-docs（文档）、laddoc-cloud（生成块）、plc-cloud-sim（仿真验证）、tialink（真实工程操作）。",
+      "version": "0.1.0"
+    }
+  ]
+}

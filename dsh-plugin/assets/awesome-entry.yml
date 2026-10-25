@@ -1,0 +1,16 @@
+# awesome-dsh-plugin 投稿条目（提交时复制到 data/plugins/tia-forge__tiaforge-plugins--dsh-plugin.yml）
+#
+# 前置（缺一不可）：
+#   1. 仓库创建满 1 天（2026-10-26 之后才能过 CI）
+#   2. package.json 声明 dsh.bundle（已声明，在 dsh-plugin/ 子包）
+#   3. 描述以句号结尾；含 ": " 必须加引号（本文件已避开）
+#
+# 提交方式：fork → 新增这一个文件 → PR（一个 PR 最多 3 条）
+
+url: https://github.com/tia-forge/tiaforge-plugins/tree/main/dsh-plugin
+name: tia-forge/tiaforge-plugins#dsh-plugin
+category: tools
+description:
+  en: Registers four TIA Portal skills (Siemens PLC docs lookup, ladder-logic generation, scan-cycle simulation with PASS/FAIL scenarios, and a local gateway that drives a real TIA Portal project) and wires the matching MCP endpoints, so an agent can go from a question to compiled, verified PLC code.
+  zh: 一次装齐西门子博途（TIA Portal）的四项能力——官方文档检索、梯形图生成、逐扫描仿真与 PASS/FAIL 验收、操作真实工程的本机网关——并把对应 MCP 端点一并接好，让智能体从提问一路走到编译通过的 PLC 代码。
+icon: https://raw.githubusercontent.com/tia-forge/tiaforge-plugins/main/dsh-plugin/assets/icon-180.png

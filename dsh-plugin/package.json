@@ -1,0 +1,42 @@
+{
+  "name": "dsh-tiaforge",
+  "version": "0.1.2",
+  "description": "TIA Forge for DeepSeek Harness: 4 skills (TIA Portal docs / LadDoc ladder generation / PLC cloud simulation / TiaLink gateway) + 4 MCP endpoints wired as one bundle.",
+  "type": "module",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "cordis.patch.yml",
+    "skills"
+  ],
+  "keywords": [
+    "dsh-plugin",
+    "dsh",
+    "tia-portal",
+    "siemens",
+    "plc",
+    "scl",
+    "lad",
+    "mcp"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "汇智网 (hubwiz.com)",
+    "email": "support@hubwiz.com",
+    "url": "https://tia.hubwiz.com/"
+  },
+  "homepage": "https://tia.hubwiz.com/?utm_source=dsh&utm_medium=plugin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tia-forge/dsh-tiaforge.git"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "engines": {
+    "dsh": ">=0.2.0-rc.0 <0.2.1-rc.0 || >=0.2.1-rc.0 <0.3.0",
+    "node": ">=22"
+  }
+}

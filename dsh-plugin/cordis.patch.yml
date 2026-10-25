@@ -1,0 +1,57 @@
+# dsh-tiaforge 的 patch 层：把四个技能与四个 MCP 端点接进 profile。
+#
+# 由 dsh.profile.bundles 依序应用；后应用的行按 id 覆盖前面的行。
+# 本层只插入新行，不改任何已有行，因此与 dsh-base / web-app 的升级兼容性最好。
+#
+# 所有 MCP 行都设 failOnStartupError: false —— 端点没起来（本机没装 TiaLink、
+# 没配 API Key）时，插件仍然加载，只是不出现对应工具，不会拖垮整个 profile。
+
+- insert:
+    # ① 技能：本包 index.js 读取 skills/*/SKILL.md 并注册进 ctx.skills
+    - id: tiaforge-skills
+      name: dsh-tiaforge
+
+    # ② TiaLink —— 本机网关（博途同机）。未授权时只读可用。
+    - id: tiaforge-mcp-tialink
+      name: '@deepseek-ai/dsh-mcp-client'
+      config:
+        serverName: tialink
+        transport: streamable-http
+        url: !!js process.env.TIALINK_URL ?? 'http://127.0.0.1:8080/mcp'
+        headers:
+          Authorization: !!js '`Bearer ${process.env.TIALINK_TOKEN ?? ""}`'
+        toolCallTimeoutMs: 600000
+        failOnStartupError: false
+
+    # ③ 博途编程文档检索（2800+ 章节，get_docs）
+    - id: tiaforge-mcp-docs
+      name: '@deepseek-ai/dsh-mcp-client'
+      config:
+        serverName: tia-docs
+        transport: streamable-http
+        url: https://tia.hubwiz.com/ai-coding-docs/mcp
+        headers:
+          Authorization: !!js '`Bearer ${process.env.TIA_DOCS_KEY ?? ""}`'
+        failOnStartupError: false
+
+    # ④ PLC 云仿真（逐扫描 + 场景 PASS/FAIL）
+    - id: tiaforge-mcp-sim
+      name: '@deepseek-ai/dsh-mcp-client'
+      config:
+        serverName: plc-sim
+        transport: streamable-http
+        url: https://tia.hubwiz.com/sim/mcp
+        headers:
+          Authorization: !!js '`Bearer ${process.env.TIA_SIM_KEY ?? ""}`'
+        failOnStartupError: false
+
+    # ⑤ LadDoc Cloud（梯形图 JSON → 博途可导入 SimaticML）
+    - id: tiaforge-mcp-laddoc
+      name: '@deepseek-ai/dsh-mcp-client'
+      config:
+        serverName: laddoc
+        transport: streamable-http
+        url: https://tia.hubwiz.com/lad/mcp
+        headers:
+          Authorization: !!js '`Bearer ${process.env.TIA_LAD_KEY ?? ""}`'
+        failOnStartupError: false

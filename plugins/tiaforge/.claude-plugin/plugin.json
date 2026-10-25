@@ -1,0 +1,22 @@
+{
+  "name": "tiaforge",
+  "description": "博途（TIA Portal）工程自动化：文档检索、LadDoc 生成块、云端仿真 PASS/FAIL、TiaLink 在真实工程里组态/编译/下载/读回。",
+  "version": "0.1.0",
+  "author": {
+    "name": "汇智网 (hubwiz.com)",
+    "url": "https://www.hubwiz.com/"
+  },
+  "homepage": "https://tia.hubwiz.com/?utm_source=workbuddy&utm_medium=plugin",
+  "repository": "https://github.com/tia-forge/codebuddy-plugins",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "tia-portal",
+    "siemens",
+    "plc",
+    "scl",
+    "lad",
+    "openness",
+    "mcp",
+    "industrial-automation"
+  ]
+}
