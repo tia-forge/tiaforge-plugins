@@ -10,12 +10,22 @@
 
 ## 装
 
+### A. 桌面端界面装（推荐，三步）
+
+1. 点 DSH 左上角【插件】；
+2. 输入 `dsh-tiaforge`；
+3. 点安装 → **完全退出并重开** DSH（MCP 连接是在启动时建立的）。
+
+装完模型侧就能看到 **五个技能 + 五个已接入的服务**，全程不用开终端、不用改配置文件。
+
+### B. 命令行（写脚本、批量装、或 `dsh web` 里找不到插件入口时）
+
 ```sh
+# 从 npm（预构建，推荐）
+dsh plugin --profile web add dsh-tiaforge
+
 # 从 GitHub（本仓库的 dsh-plugin 目录）
 dsh plugin --profile web add github:tia-forge/tiaforge-plugins#path:dsh-plugin
-
-# 或从 npm（预构建，推荐）
-dsh plugin --profile web add dsh-tiaforge
 ```
 
 装完重启 `dsh web`，并强刷浏览器。
@@ -41,6 +51,8 @@ MCP 行全部设 `failOnStartupError: false`：端点没起来（没装 TiaLink�
 
 Desktop 是 dsh Web 应用的 Electron 壳，**插件语义完全一致**（同一个共享插件管理器、同一个 profile runner），
 只是 profile 目录不同：`$DSH_HOME/profiles/desktop`，且**由 Electron 独占**。
+
+> **走 A（界面安装）不会碰到下面这两条** —— 它们只在你用**命令行**往 Desktop 里装时才有关。
 
 两个硬约束（官方 `apps/desktop/README.zh.md`）：
 
