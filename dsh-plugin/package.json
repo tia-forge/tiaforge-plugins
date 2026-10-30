@@ -1,6 +1,6 @@
 {
   "name": "dsh-tiaforge",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "TIA Forge for DeepSeek Harness: 5 skills (TIA Portal docs / LadDoc ladder generation / ladder rendering / PLC cloud simulation / TiaLink gateway) + 5 MCP endpoints wired as one bundle.",
   "type": "module",
   "main": "index.js",

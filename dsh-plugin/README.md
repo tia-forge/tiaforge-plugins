@@ -1,5 +1,7 @@
 # dsh-tiaforge —— DeepSeek Harness 插件
 
+[![skills.sh](https://skills.sh/b/tia-forge/tiaforge-plugins)](https://skills.sh/tia-forge/tiaforge-plugins)
+
 把 TIA Forge 的**五个技能**和**五个 MCP 端点**打成**一个组合包（bundle）**：
 装一次，DSH 里就有「查文档 → 生成梯形图 → 看图核对 → 跑仿真 → 操作真实工程」这条链。
 

@@ -1,5 +1,7 @@
 # TIA Forge 插件市场（WorkBuddy / CodeBuddy Code）
 
+[![skills.sh](https://skills.sh/b/tia-forge/tiaforge-plugins)](https://skills.sh/tia-forge/tiaforge-plugins)
+
 西门子博途（TIA Portal）工程自动化的**一套插件**：五个技能 + 四个斜杠指令 + 一条 MCP 连接。
 WorkBuddy 与 CodeBuddy Code 共用同一套插件运行时，所以**这一个仓库同时服务两个客户端**。
 
@@ -46,6 +48,15 @@ WorkBuddy 与 CodeBuddy Code 共用同一套插件运行时，所以**这一个�
 ```
 
 这条走的也是同一份市场定义，只是把「填地址」换成了 `owner/repo` 形式——反而不受上面那个 URL 限制。
+
+### D. 其他 skill 客户端（Claude Code / Cursor / Codex / Cline 等）
+
+```bash
+npx skills add tia-forge/tiaforge-plugins
+```
+
+这条只装**技能**（五个 `SKILL.md`），不带斜杠指令。它读的是本仓的 `.claude-plugin/marketplace.json`，
+所以没有额外目录要求；`npx skills add tia-forge/tiaforge-plugins --list` 可以先看清单再决定装哪个。
 
 ## 里面有什么
 
