@@ -1,7 +1,7 @@
 {
   "name": "tiaforge",
-  "description": "博途（TIA Portal）工程自动化：文档检索、LadDoc 生成块、云端仿真 PASS/FAIL、TiaLink 在真实工程里组态/编译/下载/读回。",
-  "version": "0.1.0",
+  "description": "博途（TIA Portal）工程自动化：文档检索、LadDoc 生成块、SimaticML 渲染看图、云端仿真 PASS/FAIL、TiaLink 在真实工程里组态/编译/下载/读回。",
+  "version": "0.2.0",
   "author": {
     "name": "汇智网 (hubwiz.com)",
     "url": "https://www.hubwiz.com/"

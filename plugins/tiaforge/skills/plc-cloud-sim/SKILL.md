@@ -1,11 +1,12 @@
 ---
 name: plc-cloud-sim
 slug: plc-cloud-sim
-displayName: PLC 云仿真（免装博途）
-version: 1.0.4
+displayName: 梯形图/SCL 云仿真（免装博途）
+version: 1.0.7
 summary: 不装博途也能跑 PLC 逻辑：把 SCL 或 LadDoc 梯形图交给云端 MCP，逐扫描周期执行、回读变量、跑声明式场景拿 PASS/FAIL。含六个工具怎么选、场景怎么设计、报告怎么读。
 description: 用云端 MCP 仿真 PLC 程序：校验 SCL 与 LadDoc 梯形图、逐扫描周期运行、回读变量与诊断、执行声明式场景（用例/穷举/模糊/不变量）得到 PASS/FAIL 报告。当用户要"验证 AI 写的 PLC 代码"、"不装博途先跑一遍逻辑"、"起保停/状态机回归"、"给梯形图写测试用例"时使用。不需要博途，程序片段会上传云端。
 license: CC-BY-4.0
+tags: [梯形图, SCL, 仿真, 博途, 博图, PLC, 测试, 回归]
 homepage: https://tia.hubwiz.com/sim?utm_source=workbuddy-plugin&utm_medium=plugin
 metadata:
   publisher: 汇智网 (hubwiz.com)
@@ -15,6 +16,20 @@ metadata:
 ---
 
 # PLC 云仿真 —— 让 AI 写的 PLC 代码先跑起来
+
+## 30 秒跑通（照这个做，养成“先能跑再读”的习惯）
+
+1. **拿 Key**（微信扫码，新用户 100 次免费，无需注册）：https://tia.hubwiz.com/sim?utm_source=workbuddy-plugin&utm_medium=plugin
+2. **把下面这段贴进你的 MCP 客户端**（WorkBuddy：`~/.workbuddy/mcp.json`；Claude Code / Cursor / VS Code 直接贴）：
+
+```json
+{"mcpServers":{"plc-sim":{"type":"http","url":"https://tia.hubwiz.com/sim/mcp",
+  "headers":{"Authorization":"Bearer <你的 API Key>"}}}}
+```
+
+3. **成功标准**：`list tools` 能看到 `scl_validate` / `scl_simulate` / `lad_run_scenario` 等 6 个工具 → 给一段 SCL 跑 `scl_validate` → `scl_simulate`。
+
+> 401 = Key 没带上或已过期；`initialize` / `tools/list` **不计费**，可以放心试。跑通再往下读。
 
 **一句话**：这是**程序级**仿真，不是整机仿真。给它 SCL 源码或 LadDoc（JSON 格式的梯形图文档），它逐扫描周期执行、回读变量、按场景出 PASS/FAIL —— **不需要博途，也不需要硬件**。
 
@@ -143,12 +158,13 @@ metadata:
 
 ## 配套技能（同一套 TIA Forge 工作流）
 
-这四个技能是一条链：**查文档 → 生成块 → 跑验证 → 落地工程**。单独装一个能用，装齐才闭环。
+这五个技能是一条链：**查文档 → 生成块 → 看图核对 → 跑验证 → 落地工程**。单独装一个能用，装齐才闭环。
 
 | 技能 | 安装坐标 | 什么时候需要它 |
 |---|---|---|
 | 博途编程文档检索 | `@indiv-tiaforge/tia-portal-docs` | 不确定指令参数、引脚含义、版本行为 |
 | LadDoc Cloud | `@indiv-tiaforge/laddoc-cloud` | 要把 LadDoc 生成成博途可导入的块 |
+| 梯形图渲染 | `@indiv-tiaforge/lad-render-cloud` | 把 SimaticML 渲染成 PNG，导入前先看一眼 |
 | PLC 云仿真 **← 你在这里** | `@indiv-tiaforge/plc-cloud-sim` | 生成后跑 PASS/FAIL、回归、边界用例 |
 | TiaLink | `@indiv-tiaforge/tialink-tia-portal` | 在真实工程里编译、下载、读回 |
 

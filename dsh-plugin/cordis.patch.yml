@@ -1,4 +1,4 @@
-# dsh-tiaforge 的 patch 层：把四个技能与四个 MCP 端点接进 profile。
+# dsh-tiaforge 的 patch 层：把五个技能与五个 MCP 端点接进 profile。
 #
 # 由 dsh.profile.bundles 依序应用；后应用的行按 id 覆盖前面的行。
 # 本层只插入新行，不改任何已有行，因此与 dsh-base / web-app 的升级兼容性最好。
@@ -54,4 +54,17 @@
         url: https://tia.hubwiz.com/lad/mcp
         headers:
           Authorization: !!js '`Bearer ${process.env.TIA_LAD_KEY ?? ""}`'
+        failOnStartupError: false
+
+    # ⑥ 梯形图渲染（SimaticML → PNG，导入前先看一眼）
+    #    注意：这是唯一**计费**的端点 —— render_simaticml 每次扣 1 次额度（先扣后执行），
+    #    render_version 免费。没有 TIA_RENDER_KEY 时 401，工具不出现，不会白扣额度。
+    - id: tiaforge-mcp-render
+      name: '@deepseek-ai/dsh-mcp-client'
+      config:
+        serverName: lad-render
+        transport: streamable-http
+        url: https://tia.hubwiz.com/render/mcp
+        headers:
+          Authorization: !!js '`Bearer ${process.env.TIA_RENDER_KEY ?? ""}`'
         failOnStartupError: false

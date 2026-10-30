@@ -1,11 +1,12 @@
 ---
 name: laddoc-cloud
 slug: laddoc-cloud
-displayName: AI 生成博途梯形图
-version: 1.0.4
+displayName: 梯形图生成（博途可导入）
+version: 1.0.7
 summary: 让 AI 直接产出「能导入博途」的梯形图块：写 LadDoc（JSON 格式的 PLC 梯形图文档）→ 按 lad-ir D9 规则校验 → 确定性生成 V19 SimaticML（FC/FB/OB）。有 issue 就不出 XML，避免导入被拒。
 description: 把 LadDoc（JSON 格式的 PLC 梯形图文档）校验后确定性生成为 TIA Portal V19 可直接导入的 SimaticML 块（FC/FB/OB）。当用户要"用 AI 生成梯形图块"、"让 AI 写 LAD 并导入博途"、"LadDoc 校验/生成 SimaticML"、"批量生成 PLC 块"时使用。不需要博途即可生成，导入时才需要博途 V19。
 license: CC-BY-4.0
+tags: [梯形图, LAD, 博途, 博图, SimaticML, PLC, 代码生成]
 homepage: https://tia.hubwiz.com/lad?utm_source=workbuddy-plugin&utm_medium=plugin
 metadata:
   publisher: 汇智网 (hubwiz.com)
@@ -16,6 +17,20 @@ metadata:
 ---
 
 # LadDoc Cloud —— 把 AI 写的梯形图变成博途能导入的块
+
+## 30 秒跑通（照这个做，养成“先能跑再读”的习惯）
+
+1. **拿 Key**（微信扫码，新用户 100 次免费，无需注册）：https://tia.hubwiz.com/lad?utm_source=workbuddy-plugin&utm_medium=plugin
+2. **把下面这段贴进你的 MCP 客户端**（WorkBuddy：`~/.workbuddy/mcp.json`）：
+
+```json
+{"mcpServers":{"laddoc":{"type":"http","url":"https://tia.hubwiz.com/lad/mcp",
+  "headers":{"Authorization":"Bearer <你的 API Key>"}}}}
+```
+
+3. **成功标准**：`list tools` 能看到 `lad_version` / `lad_validate` / `lad_generate` → 先调 `lad_version`（**不计费**）确认连通，再 validate 一份 LadDoc。
+
+> 401 = Key 没带上或已过期；`initialize` / `tools/list` / `lad_version` 都不计费。
 
 **一句话**：AI 很少能可靠地"画"梯形图，但很擅长写 **JSON**。LadDoc 就是为这个设计的中间表示：**LadDoc（JSON 格式的 PLC 梯形图文档，专为 AI 生成与修改设计）**，经服务校验后**确定性**生成 SimaticML，导入博途即成块。
 
@@ -130,12 +145,13 @@ valid=true 之后再调 lad_generate，把返回的 XML 存成 .xml，并告诉�
 
 ## 配套技能（同一套 TIA Forge 工作流）
 
-这四个技能是一条链：**查文档 → 生成块 → 跑验证 → 落地工程**。单独装一个能用，装齐才闭环。
+这五个技能是一条链：**查文档 → 生成块 → 看图核对 → 跑验证 → 落地工程**。单独装一个能用，装齐才闭环。
 
 | 技能 | 安装坐标 | 什么时候需要它 |
 |---|---|---|
 | 博途编程文档检索 | `@indiv-tiaforge/tia-portal-docs` | 不确定指令参数、引脚含义、版本行为 |
 | LadDoc Cloud **← 你在这里** | `@indiv-tiaforge/laddoc-cloud` | 要把 LadDoc 生成成博途可导入的块 |
+| 梯形图渲染 | `@indiv-tiaforge/lad-render-cloud` | 把 SimaticML 渲染成 PNG，导入前先看一眼 |
 | PLC 云仿真 | `@indiv-tiaforge/plc-cloud-sim` | 生成后跑 PASS/FAIL、回归、边界用例 |
 | TiaLink | `@indiv-tiaforge/tialink-tia-portal` | 在真实工程里编译、下载、读回 |
 

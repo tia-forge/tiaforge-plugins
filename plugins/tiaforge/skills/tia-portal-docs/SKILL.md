@@ -1,11 +1,12 @@
 ---
 name: tia-portal-docs
 slug: tia-portal-docs
-displayName: 博途编程文档检索
-version: 1.0.5
+displayName: 博途文档检索（TIA Portal）
+version: 1.0.8
 summary: 让 AI 查博途官方编程文档而不是凭记忆猜：2800+ 编程章节（函数块、指令、数据类型、系统常量）做成一个 MCP 工具 get_docs，语义检索直接给出处。含 8 个高频提问模板与「topic 怎么写才召回准」。
 description: 检索西门子 TIA Portal（博途/博图）官方编程文档：函数块用法、指令参数与边沿语义、数据类型与取值范围、系统常量、错误代码。当用户问"这个指令怎么用""TON 和 TONR 区别""S7-1500 定时器最大时长""某个系统常量是什么"或需要核对 API 参数时使用。比模型记忆可靠，因为博途文档随版本变。
 license: CC-BY-4.0
+tags: [博途, 博图, TIA Portal, 西门子, 指令, 文档, SCL, 数据类型]
 homepage: https://tia.hubwiz.com/ai-coding-docs?utm_source=workbuddy-plugin&utm_medium=plugin
 metadata:
   publisher: 汇智网 (hubwiz.com)
@@ -16,6 +17,20 @@ metadata:
 ---
 
 # TIA Portal Docs —— 让 AI 查文档，而不是背指令
+
+## 30 秒跑通（照这个做，养成“先能跑再读”的习惯）
+
+1. **拿 Key**（微信扫码登录即得；控制台 → 「更换密钥」可重生，**新密钥只显示一次**）：https://tia.hubwiz.com/ai-coding-docs?utm_source=workbuddy-plugin&utm_medium=plugin
+2. **把下面这段贴进你的 MCP 客户端**（WorkBuddy：`~/.workbuddy/mcp.json`）：
+
+```json
+{"mcpServers":{"tia-docs":{"type":"http","url":"https://tia.hubwiz.com/ai-coding-docs/mcp",
+  "headers":{"Authorization":"Bearer <你的 API Key>"}}}}
+```
+
+3. **成功标准**：`list tools` 看到 `get_docs` → 问一句 `TON 和 TONR 的区别`，返回带出处章节即通。
+
+> 401 = Key 没带上或已过期（团队共用一把时，别人换了密钥也会全员 401）。
 
 **一句话**：模型对博途指令的记忆是**模糊且版本相关**的（参数名、边沿语义、定时器上限、系统常量），而这里是 **2800+ 个官方编程章节**接成的 MCP 工具 `get_docs`：你把问题丢进去，它语义检索后返回章节内容。
 
@@ -115,12 +130,13 @@ claude mcp add --transport http tia https://tia.hubwiz.com/ai-coding-docs/mcp \
 
 ## 配套技能（同一套 TIA Forge 工作流）
 
-这四个技能是一条链：**查文档 → 生成块 → 跑验证 → 落地工程**。单独装一个能用，装齐才闭环。
+这五个技能是一条链：**查文档 → 生成块 → 看图核对 → 跑验证 → 落地工程**。单独装一个能用，装齐才闭环。
 
 | 技能 | 安装坐标 | 什么时候需要它 |
 |---|---|---|
 | 博途编程文档检索 **← 你在这里** | `@indiv-tiaforge/tia-portal-docs` | 不确定指令参数、引脚含义、版本行为 |
 | LadDoc Cloud | `@indiv-tiaforge/laddoc-cloud` | 要把 LadDoc 生成成博途可导入的块 |
+| 梯形图渲染 | `@indiv-tiaforge/lad-render-cloud` | 把 SimaticML 渲染成 PNG，导入前先看一眼 |
 | PLC 云仿真 | `@indiv-tiaforge/plc-cloud-sim` | 生成后跑 PASS/FAIL、回归、边界用例 |
 | TiaLink | `@indiv-tiaforge/tialink-tia-portal` | 在真实工程里编译、下载、读回 |
 

@@ -20,8 +20,8 @@ url: https://github.com/tia-forge/tiaforge-plugins/tree/main/dsh-plugin
 name: tia-forge/tiaforge-plugins#dsh-plugin
 category: tools
 description:
-  en: Registers four TIA Portal skills (Siemens PLC docs lookup, ladder-logic generation, scan-cycle simulation with PASS/FAIL scenarios, and a local gateway that drives a real TIA Portal project) and wires the matching MCP endpoints, so an agent can go from a question to compiled, verified PLC code.
-  zh: 一次装齐西门子博途（TIA Portal）的四项能力——官方文档检索、梯形图生成、逐扫描仿真与 PASS/FAIL 验收、操作真实工程的本机网关——并把对应 MCP 端点一并接好，让智能体从提问一路走到编译通过的 PLC 代码。
+  en: Registers five TIA Portal skills (Siemens PLC docs lookup, ladder-logic generation, SimaticML-to-PNG ladder rendering, scan-cycle simulation with PASS/FAIL scenarios, and a local gateway that drives a real TIA Portal project) and wires the matching MCP endpoints, so an agent can go from a question to compiled, verified PLC code.
+  zh: 一次装齐西门子博途（TIA Portal）的五项能力——官方文档检索、梯形图生成、梯形图渲染成图核对、逐扫描仿真与 PASS/FAIL 验收、操作真实工程的本机网关——并把对应 MCP 端点一并接好，让智能体从提问一路走到编译通过的 PLC 代码。
 icon: https://raw.githubusercontent.com/tia-forge/tiaforge-plugins/main/dsh-plugin/assets/icon-180.png
 ```
 
@@ -39,8 +39,8 @@ Add tiaforge-plugins#dsh-plugin — TIA Portal (Siemens PLC) skills + MCP endpoi
 Adds `tia-forge/tiaforge-plugins#dsh-plugin` (npm: `dsh-tiaforge`).
 
 **What it ships, not just what it depends on:**
-- four skill bodies in `skills/*/SKILL.md` (~40 KB of engineering checklists, wiring tables, failure triage), registered at runtime via `ctx.skills.register()` in `index.js` — no file copying, no `customSkillDirs`;
-- four `@deepseek-ai/dsh-mcp-client` rows wired in one patch layer (TIA Portal docs, LadDoc→SimaticML, PLC cloud simulation, and a local gateway that drives a real TIA Portal project).
+- five skill bodies in `skills/*/SKILL.md` (~40 KB of engineering checklists, wiring tables, failure triage), registered at runtime via `ctx.skills.register()` in `index.js` — no file copying, no `customSkillDirs`;
+- five `@deepseek-ai/dsh-mcp-client` rows wired in one patch layer (TIA Portal docs, LadDoc→SimaticML, SimaticML→PNG ladder rendering, PLC cloud simulation, and a local gateway that drives a real TIA Portal project).
 This is configuration composition + bundled content, not a meta-package of other people's plugins — it depends on no third-party plugin.
 
 **Installability (checked per contributing.md):**

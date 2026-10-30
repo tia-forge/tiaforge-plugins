@@ -1,11 +1,12 @@
 ---
 name: tialink-tia-portal
 slug: tialink-tia-portal
-displayName: AI 操作博途（TiaLink）
-version: 1.0.4
+displayName: 博途 AI 自动化（TiaLink）
+version: 1.0.7
 summary: 让 AI 直接操作西门子博途（TIA Portal V19/V20）工程：组态机架与网络、建 FB/FC/DB 并写 SCL、编译、下载到 PLCSIM 仿真、读回核对。含前置自查与失败判读，不靠猜。
 description: 操作西门子 TIA Portal（博途/博图，V19/V20）工程：配置硬件与网络、创建 FB/FC/DB/UDT 并写 SCL、编译、下载到 S7-PLCSIM 仿真、读回核对。当用户提到博途、博图、TIA Portal、西门子 PLC 自动化、SCL 编程、机架组态、Openness，或要把 PLC 工程交给 AI 操作时使用。需要本机已装 TiaLink 网关（付费软件，未授权时只读）。
 license: CC-BY-4.0
+tags: [博途, 博图, TIA Portal, SCL, 西门子, PLC, Openness, 自动化]
 homepage: https://tia.hubwiz.com/tia-link?utm_source=workbuddy-plugin&utm_medium=plugin
 metadata:
   publisher: 汇智网 (hubwiz.com)
@@ -17,6 +18,26 @@ metadata:
 ---
 
 # TiaLink —— 用 MCP 操作博途（TIA Portal）
+
+## 30 秒自检（先确认能不能连，再去读后面的检查清单）
+
+1. **网关在不在跑**（在客户端机器上一条命令）：
+
+   ```bash
+   curl -sS -o /dev/null -w "%{http_code}\n" http://<网关IP>:8080/mcp
+   ```
+
+   **返回 4xx 也算通**（网络到了、只是缺 token）；`Connection refused` / 超时才是网络问题。
+2. **把下面这段贴进你的 MCP 客户端**（WorkBuddy：`~/.workbuddy/mcp.json`）：
+
+```json
+{"mcpServers":{"tialink":{"type":"http","url":"http://<网关IP>:8080/mcp",
+  "headers":{"Authorization":"Bearer <你的令牌>"}}}}
+```
+
+3. **成功标准**：`list tools` 有返回 → 读一个 scratch 工程 → 建一个块并要编译结果。三步都过，才算装好了。
+
+> 还没装/没授权：https://tia.hubwiz.com/tia-link?utm_source=workbuddy-plugin&utm_medium=plugin （¥99/月，扫码付款后立即给下载与许可步骤）。**未授权时网关只读**，不会改你的工程。令牌在网关控制台配置（包内 `README.txt` §6）。
 
 **它解决的事**：把"AI 给一段 SCL 代码"变成"AI 在博途里把一个块建出来、编译通过、下载到仿真、再读回来核对"。
 
@@ -241,12 +262,13 @@ curl -sS -X POST "http://192.168.1.78:8080/mcp" \
 
 ## 配套技能（同一套 TIA Forge 工作流）
 
-这四个技能是一条链：**查文档 → 生成块 → 跑验证 → 落地工程**。单独装一个能用，装齐才闭环。
+这五个技能是一条链：**查文档 → 生成块 → 看图核对 → 跑验证 → 落地工程**。单独装一个能用，装齐才闭环。
 
 | 技能 | 安装坐标 | 什么时候需要它 |
 |---|---|---|
 | 博途编程文档检索 | `@indiv-tiaforge/tia-portal-docs` | 不确定指令参数、引脚含义、版本行为 |
 | LadDoc Cloud | `@indiv-tiaforge/laddoc-cloud` | 要把 LadDoc 生成成博途可导入的块 |
+| 梯形图渲染 | `@indiv-tiaforge/lad-render-cloud` | 把 SimaticML 渲染成 PNG，导入前先看一眼 |
 | PLC 云仿真 | `@indiv-tiaforge/plc-cloud-sim` | 生成后跑 PASS/FAIL、回归、边界用例 |
 | TiaLink **← 你在这里** | `@indiv-tiaforge/tialink-tia-portal` | 在真实工程里编译、下载、读回 |
 

@@ -1,12 +1,12 @@
 #!/usr/bin/env sh
-# 把 SkillHub 上架的四个技能同步进插件包，并把埋点改成 workbuddy 渠道。
+# 把 SkillHub 上架的五个技能同步进插件包，并把埋点改成 workbuddy 渠道。
 # 单一真源：distribution/skillhub/<slug>/SKILL.md
 set -eu
 HERE=$(cd "$(dirname "$0")" && pwd)
 SRC="$HERE/../skillhub"
 DST="$HERE/plugins/tiaforge/skills"
 
-for slug in tialink-tia-portal plc-cloud-sim laddoc-cloud tia-portal-docs; do
+for slug in tialink-tia-portal plc-cloud-sim laddoc-cloud tia-portal-docs lad-render-cloud; do
   mkdir -p "$DST/$slug"
   sed -e 's/utm_source=skillhub/utm_source=workbuddy-plugin/g' \
       -e 's/utm_medium=skill/utm_medium=plugin/g' \
@@ -23,7 +23,7 @@ echo "done -> $DST"
 
 # ② DSH 插件包内的技能副本（埋点改成 dsh）
 DSH="$HERE/dsh-plugin/skills"
-for slug in tialink-tia-portal plc-cloud-sim laddoc-cloud tia-portal-docs; do
+for slug in tialink-tia-portal plc-cloud-sim laddoc-cloud tia-portal-docs lad-render-cloud; do
   mkdir -p "$DSH/$slug"
   sed -e 's/utm_source=skillhub/utm_source=dsh/g' \
       -e 's/utm_medium=skill/utm_medium=plugin/g' \

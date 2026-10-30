@@ -1,7 +1,7 @@
 # dsh-tiaforge —— DeepSeek Harness 插件
 
-把 TIA Forge 的**四个技能**和**四个 MCP 端点**打成**一个组合包（bundle）**：
-装一次，DSH 里就有「查文档 → 生成梯形图 → 跑仿真 → 操作真实工程」这条链。
+把 TIA Forge 的**五个技能**和**五个 MCP 端点**打成**一个组合包（bundle）**：
+装一次，DSH 里就有「查文档 → 生成梯形图 → 看图核对 → 跑仿真 → 操作真实工程」这条链。
 
 > **为什么需要它**：DSH 本身支持 skill（`ctx.skills` + 文件系统提供方，扫 `<project>/.dsh/skills`、`.agents/skills`、`~/.dsh/skills`），
 > 但**没有 `dsh skill add` 这类命令** —— skill 只能靠"把文件放到扫描目录"或"插件注册"进来。
@@ -27,11 +27,13 @@ dsh plugin --profile web add dsh-tiaforge
 | 技能 | `tialink-tia-portal` | AI 操作博途工程（V19/V20；未授权只读） |
 | 技能 | `plc-cloud-sim` | 云端逐扫描仿真 + 场景 PASS/FAIL |
 | 技能 | `laddoc-cloud` | LadDoc → 博途可导入 SimaticML |
+| 技能 | `lad-render-cloud` | SimaticML → PNG，导入前先看一眼（**计费**，每次渲染扣 1 次） |
 | 技能 | `tia-portal-docs` | 博途编程文档检索（`get_docs`） |
 | MCP | `tialink` | `http://127.0.0.1:8080/mcp`（本机网关） |
 | MCP | `tia-docs` | `https://tia.hubwiz.com/ai-coding-docs/mcp` |
 | MCP | `plc-sim` | `https://tia.hubwiz.com/sim/mcp` |
 | MCP | `laddoc` | `https://tia.hubwiz.com/lad/mcp` |
+| MCP | `lad-render` | `https://tia.hubwiz.com/render/mcp`（**计费**，见下） |
 
 MCP 行全部设 `failOnStartupError: false`：端点没起来（没装 TiaLink、没配 Key）时插件照常加载，只是对应的工具不出现，**不会拖垮 profile**。
 
@@ -65,29 +67,32 @@ Desktop 里没有"技能"页面——这不是缺功能：**技能是模型调�
 export TIALINK_TOKEN=...
 export TIALINK_URL=http://192.168.1.78:8080/mcp   # 网关在另一台机器时
 
-# ② 三个云端服务各自一把 Key（微信扫码，各 100 次免费）
+# ② 四个云端服务各自一把 Key（微信扫码，各 100 次免费）
 export TIA_DOCS_KEY=...
 export TIA_SIM_KEY=...
 export TIA_LAD_KEY=...
+export TIA_RENDER_KEY=...   # 唯一计费的：每次渲染扣 1 次，先扣后执行
 ```
 
-三个云端服务的大致分工：
+四个云端服务的大致分工：
 
 | Key | 端点 | 免费额度 | 技能 |
 |---|---|---|---|
 | `TIA_DOCS_KEY` | `/ai-coding-docs/mcp` | 100 次 | `tia-portal-docs` |
 | `TIA_SIM_KEY` | `/sim/mcp` | 100 次 | `plc-cloud-sim` |
 | `TIA_LAD_KEY` | `/lad/mcp` | 100 次 | `laddoc-cloud` |
+| `TIA_RENDER_KEY` | `/render/mcp` | 100 次 | `lad-render-cloud`（`render_version` 免费，渲染扣 1） |
 
-不配的话对应 MCP 不出现工具，但**技能仍然可用**（技能正文本身就是可读的知识，不依赖工具）。
+不配的话对应 MCP 不出现工具（没 Key = `initialize` 就 401），但**技能仍然可用**（技能正文本身就是可读的知识，不依赖工具）。
+`TIA_RENDER_KEY` 不配也不会白扣额度——这一点跟另三个一样，靠 key 门控。
 
 ## 验证
 
 ```sh
-# 1) 组合后的配置里应该有这 5 行
+# 1) 组合后的配置里应该有这 6 行
 dsh --profile web --dump-config | grep -n tiaforge
 
-# 2) 起来之后，模型侧应该能用 skill 工具看到四个技能
+# 2) 起来之后，模型侧应该能用 skill 工具看到五个技能
 dsh web
 #   对话里问：「列出你能用的 TIA 相关技能」
 ```
@@ -97,7 +102,7 @@ dsh web
 ```
 dsh-plugin/
 ├── package.json          # dsh.bundle.patch = ./cordis.patch.yml；engines.dsh = >=0.2.0 <0.3.0
-├── cordis.patch.yml      # 1 行技能注册插件 + 4 行 mcp-client
+├── cordis.patch.yml      # 1 行技能注册插件 + 5 行 mcp-client
 ├── index.js              # 读 skills/*/SKILL.md → ctx.skills.register()
 └── skills/<slug>/SKILL.md
 ```
@@ -108,11 +113,11 @@ dsh-plugin/
 
 - `engines.dsh: ">=0.2.0-rc.0 <0.2.1-rc.0 || >=0.2.1-rc.0 <0.3.0"`（0.1.1 起）。**两个分支是必需的**：node-semver 只允许某个比较符元组与版本 tuple 完全一致且自带预发布标签时才放行预发布版，单个 `>=0.2.1-rc.1 <0.3.0` 会把 `0.2.0-rc.2` 这类版本静默排除。
 - 实测环境：**dsh desktop 0.2.0-rc.2** 可安装并加载（桌面端未强制 engines，但其它安装路径会校验）。
-- 升级 DSH 后先跑一次 `--dump-config`，确认 5 行还在，再开始用。
+- 升级 DSH 后先跑一次 `--dump-config`，确认 6 行还在，再开始用。
 
 ## 许可
 
-插件代码 MIT；技能正文 CC BY 4.0（见各 `SKILL.md`）。TiaLink 网关与三个云端服务是商业软件/服务，不在本许可范围内。
+插件代码 MIT；技能正文 CC BY 4.0（见各 `SKILL.md`）。TiaLink 网关与四个云端服务是商业软件/服务，不在本许可范围内。
 
 ## 发布（维护者）
 
