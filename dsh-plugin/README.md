@@ -130,15 +130,3 @@ dsh-plugin/
 ## 许可
 
 插件代码 MIT；技能正文 CC BY 4.0（见各 `SKILL.md`）。TiaLink 网关与四个云端服务是商业软件/服务，不在本许可范围内。
-
-## 发布（维护者）
-
-```sh
-sh publish-npm.sh          # 读 ~/.paseo/npmjs-key，用临时 userconfig，不污染 ~/.npmrc
-sh publish-npm.sh --dry-run
-```
-
-要点：
-- token 放 `~/.paseo/npmjs-key`，**只一行 `npm_xxx`**，不要带 `//registry.npmjs.org/:_authToken=` 前缀。
-- `npm whoami` / `/-/npm/v1/user` 对 granular / automation token 会返回 401/403，**这不能用来判断 token 是否可用**——真正的判据是 `npm publish` 的返回。
-- 首次发布会顺带生成一个 `0.0.0-stage` 占位版本（npm 的 staged publishing 机制），`latest` 会指向真正发布的那一版。

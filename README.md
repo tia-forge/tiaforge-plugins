@@ -91,15 +91,6 @@ dsh plugin --profile web add github:tia-forge/tiaforge-plugins#path:dsh-plugin
 
 细节见 [`dsh-plugin/README.md`](./dsh-plugin/README.md)。
 
-## 维护
-
-```bash
-sh sync-skills.sh    # 把 ../skillhub/<slug>/SKILL.md 同步进来并改写 utm_source
-sh zip-skills.sh     # 重打 zip/（读 SKILL.md 的 version: 自动命名，旧版自动删）
-```
-
-改完 commit + push，客户端 `/plugin marketplace update tia-forge` 即可拿到新版本（或等自动更新）。
-
 ## 许可与归属
 
 - 技能与文档：**CC BY 4.0**
