@@ -65,6 +65,7 @@ npx skills add tia-forge/tiaforge-plugins
 | 技能 ×5 | `tia-portal-docs`（2800+ 章节文档检索）、`laddoc-cloud`（LadDoc→SimaticML）、`lad-render-cloud`（SimaticML→PNG 看图核对，**计费**）、`plc-cloud-sim`（LAD/SCL 逐扫描仿真）、`tialink-tia-portal`（真实工程操作） |
 | 斜杠指令 ×4 | `/tiaforge:tia-status`（只读体检）、`/tiaforge:tia-hw-add`（机架组态）、`/tiaforge:tia-block`（建块写 SCL）、`/tiaforge:tia-verify`（三层验证） |
 | MCP | `.mcp.json` 预置 `tialink` 本地网关（`http://127.0.0.1:8080/mcp`） |
+| Pi package | `pi-plugin/`：同样的五个技能 + 五条 MCP，`pi install npm:pi-tiaforge` 装 |
 
 技能正文是**单一真源**：与 SkillHub 上架版本同源（`sync-skills.sh` 从这里同步过去、或反向往回同步），只有埋点 `utm_source` 不同（`workbuddy-plugin` vs `skillhub`）。
 
@@ -101,6 +102,21 @@ dsh plugin --profile web add github:tia-forge/tiaforge-plugins#path:dsh-plugin
 ```
 
 细节见 [`dsh-plugin/README.md`](./dsh-plugin/README.md)。
+
+## pi 也要装？
+
+[pi](https://pi.dev) 的插件是 **Pi package**：一个 npm 包，`keywords` 里带 `pi-package` 就会出现在
+[pi.dev/packages](https://pi.dev/packages) 图库里（没有提交入口，发布即被抓取）。本仓的
+[`pi-plugin/`](./pi-plugin/README.md) 就是那个包：
+
+```bash
+pi install npm:pi-tiaforge
+```
+
+pi 自己扫包内 `skills/`（不需要注册代码），MCP 由 `extensions/tiaforge.ts` 用 `registerMcpServer()` 接：
+`tialink` 总是注册，四个云端**有 Key 才注册** —— 没配 Key 的机器上不会刷 401，也不会出现“看得到工具、点了就报错”。
+
+细节见 [`pi-plugin/README.md`](./pi-plugin/README.md)。
 
 ## 许可与归属
 

@@ -1,0 +1,54 @@
+{
+  "name": "pi-tiaforge",
+  "version": "0.1.0",
+  "description": "TIA Forge for pi: five TIA Portal skills (docs / LadDoc ladder generation / ladder rendering / PLC cloud simulation / TiaLink gateway) plus the five matching MCP endpoints, installed as one package.",
+  "type": "module",
+  "keywords": [
+    "pi-package",
+    "tia-portal",
+    "siemens",
+    "plc",
+    "scl",
+    "lad",
+    "mcp"
+  ],
+  "files": [
+    "extensions",
+    "skills",
+    "README.md",
+    "LICENSE"
+  ],
+  "pi": {
+    "extensions": [
+      "./extensions/tiaforge.ts"
+    ],
+    "skills": [
+      "./skills"
+    ]
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-ai": "*",
+    "@earendil-works/pi-agent-core": "*",
+    "@earendil-works/pi-coding-agent": "*",
+    "@earendil-works/pi-tui": "*",
+    "typebox": "*"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "汇智网 (hubwiz.com)",
+    "email": "support@hubwiz.com",
+    "url": "https://tia.hubwiz.com/"
+  },
+  "homepage": "https://tia.hubwiz.com/?utm_source=pi-package&utm_medium=plugin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tia-forge/tiaforge-plugins.git",
+    "directory": "pi-plugin"
+  },
+  "bugs": {
+    "url": "https://github.com/tia-forge/tiaforge-plugins/issues"
+  }
+}
