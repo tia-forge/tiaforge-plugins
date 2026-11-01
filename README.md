@@ -1,7 +1,5 @@
 # TIA Forge 插件市场（WorkBuddy / CodeBuddy Code）
 
-[![skills.sh](https://skills.sh/b/tia-forge/tiaforge-plugins)](https://skills.sh/tia-forge/tiaforge-plugins)
-
 西门子博途（TIA Portal）工程自动化的**一套插件**：五个技能 + 四个斜杠指令 + 一条 MCP 连接。
 WorkBuddy 与 CodeBuddy Code 共用同一套插件运行时，所以**这一个仓库同时服务两个客户端**。
 
