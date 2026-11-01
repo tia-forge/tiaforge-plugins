@@ -1,7 +1,5 @@
 # pi-tiaforge
 
-[![skills.sh](https://skills.sh/b/tia-forge/tiaforge-plugins)](https://skills.sh/tia-forge/tiaforge-plugins)
-
 把 TIA Forge 的**五个技能**和**五个 MCP 端点**打进一个 pi 包：装一次，pi 里就有
 「查文档 → 生成梯形图 → 渲染看图核对 → 云端仿真跑 PASS/FAIL → 在真实工程里编译/下载/读回」这条链。
 
