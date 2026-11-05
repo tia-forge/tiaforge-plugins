@@ -2,9 +2,9 @@
 name: tialink-tia-portal
 slug: tialink-tia-portal
 displayName: 博途 AI 自动化（TiaLink）
-version: 1.0.7
-summary: 让 AI 直接操作西门子博途（TIA Portal V19/V20）工程：组态机架与网络、建 FB/FC/DB 并写 SCL、编译、下载到 PLCSIM 仿真、读回核对。含前置自查与失败判读，不靠猜。
-description: 操作西门子 TIA Portal（博途/博图，V19/V20）工程：配置硬件与网络、创建 FB/FC/DB/UDT 并写 SCL、编译、下载到 S7-PLCSIM 仿真、读回核对。当用户提到博途、博图、TIA Portal、西门子 PLC 自动化、SCL 编程、机架组态、Openness，或要把 PLC 工程交给 AI 操作时使用。需要本机已装 TiaLink 网关（付费软件，未授权时只读）。
+version: 1.0.8
+summary: 让 AI 直接操作西门子博途（TIA Portal V19 / V20 / V21）工程：组态机架与网络、建 FB/FC/DB 并写 SCL、编译、下载到 PLCSIM 仿真、读回核对。含前置自查与失败判读，不靠猜。
+description: 操作西门子 TIA Portal（博途/博图，V19 / V20 / V21）工程：配置硬件与网络、创建 FB/FC/DB/UDT 并写 SCL、编译、下载到 S7-PLCSIM 仿真、读回核对。当用户提到博途、博图、TIA Portal、西门子 PLC 自动化、SCL 编程、机架组态、Openness，或要把 PLC 工程交给 AI 操作时使用。需要本机已装 TiaLink 网关（付费软件，未授权时只读）。
 license: CC-BY-4.0
 tags: [博途, 博图, TIA Portal, SCL, 西门子, PLC, Openness, 自动化]
 homepage: https://tia.hubwiz.com/tia-link?utm_source=pi-package&utm_medium=plugin
@@ -12,8 +12,8 @@ metadata:
   publisher: 汇智网 (hubwiz.com)
   homepage: https://tia.hubwiz.com/tia-link?utm_source=pi-package&utm_medium=plugin
   repository: https://github.com/tia-forge/tialink
-  requires: TiaLink 网关（Windows + 博途 V19/V20 + Openness 用户组）
-  supported-tia-versions: V19, V20
+  requires: TiaLink 网关（Windows + 博途 V19 / V20 / V21 + Openness 用户组；V21 需 TiaLink 1.5.0+）
+  supported-tia-versions: V19, V20, V21
   transport: MCP Streamable HTTP（/mcp + Bearer）
 ---
 
@@ -51,7 +51,7 @@ AI 客户端 ──MCP(Streamable HTTP, /mcp + Bearer)──► TiaLink 网关 �
 | 是 | 不是 |
 |---|---|
 | 一个 **MCP 网关**，任何支持 Streamable HTTP + Bearer 的客户端都能用 | ❌ 不是某个 AI 厂商的插件，不绑定 Claude / WorkBuddy / DeepSeek |
-| 需要 **本机装了博途 V19 或 V20**（V21 暂不支持） | ❌ 不是云端服务，不能"上传 .ap19 帮你改" |
+| 需要 **本机装了博途 V19 / V20 / V21** | ❌ 不是云端服务，不能"上传 .ap19 帮你改" |
 | **未授权也能只读**：连上就能读工程、读块、读硬件树 | ❌ 不替你做安全设计，不碰安全回路 |
 
 ---
@@ -66,7 +66,7 @@ AI 客户端 ──MCP(Streamable HTTP, /mcp + Bearer)──► TiaLink 网关 �
 
 | # | 硬条件 | 怎么验（不用装东西） |
 |---|---|---|
-| 1 | Windows 64 位，**已装且已授权** 博途 **V19 或 V20** | 打开博途 → 帮助 → 关于；版本号必须是 V19.x / V20.x。**V21 不支持，不要试** |
+| 1 | Windows 64 位，**已装且已授权** 博途 **V19 / V20 / V21** | 打开博途 → 帮助 → 关于；版本号必须是 V19.x / V20.x / V21.x |
 | 2 | 运行网关的 **Windows 账号在本地 `Siemens TIA Openness` 用户组** | `whoami` 拿到账号 → 计算机管理 → 本地用户和组 → 组 → `Siemens TIA Openness` → 成员里有它。**没有这一条，Openness 一律报授权错误** |
 | 3 | 客户端与网关之间 **TCP 端口可达**（示例用 `8080`） | 客户端机器上 `curl -sS -o /dev/null -w "%{http_code}\n" http://<网关IP>:8080/mcp` —— 返回 **4xx 也算通**（说明网络到了，只是缺 token/路径）；`Connection refused` / 超时才是网络问题 |
 | 4 | 客户端支持 **Streamable HTTP 且能发 `Authorization: Bearer`** | 只能跑 stdio 的客户端 → 用第 1 节的 `tialink-mcp` 适配器 |
@@ -226,7 +226,7 @@ curl -sS -X POST "http://192.168.1.78:8080/mcp" \
 | `404` | 路径不是 `/mcp` | 补全路径 |
 | 连上了但工具列表是空的 | 客户端缓存了旧列表 | 重启客户端；确认支持 Streamable HTTP |
 | Openness 报授权 / "not permitted" | 账号不在 `Siemens TIA Openness` 组 | 加入组 → **注销重登**（组权限要重开会话才生效） |
-| 报版本相关错误 | 网关与博途版本不匹配 | 确认是 V19/V20；V21 不支持 |
+| 报版本相关错误 | 网关与博途版本不匹配 | 确认是 V19 / V20 / V21（V21 需 TiaLink 1.5.0+） |
 | 仿真/下载类工具失败 | PLCSIM Advanced 未装、未起、无虚拟实例、PC/PG 接口选错 | 起实例 → 选虚拟网卡 → 重试 |
 | 编译/下载调用超时 | 默认超时 600s，编译慢是正常的 | **不要**把超时降到聊天级别；等 |
 | 重启后全挂 | 网关没注册成服务，博途未就绪 | 先起博途，再起网关 |

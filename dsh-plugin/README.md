@@ -34,7 +34,7 @@ dsh plugin --profile web add github:tia-forge/tiaforge-plugins#path:dsh-plugin
 
 | 类型 | 名称 | 说明 |
 |---|---|---|
-| 技能 | `tialink-tia-portal` | AI 操作博途工程（V19/V20；未授权只读） |
+| 技能 | `tialink-tia-portal` | AI 操作博途工程（V19 / V20 / V21；未授权只读） |
 | 技能 | `plc-cloud-sim` | 云端逐扫描仿真 + 场景 PASS/FAIL |
 | 技能 | `laddoc-cloud` | LadDoc → 博途可导入 SimaticML |
 | 技能 | `lad-render-cloud` | SimaticML → PNG，导入前先看一眼（**计费**，每次渲染扣 1 次） |

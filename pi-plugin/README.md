@@ -10,7 +10,7 @@ pi install npm:pi-tiaforge
 装完 `/mcp` 里应能看到 `tialink`（本机网关在跑时），`/skill:` 补全里能看到五个技能。
 先在别的项目里试一次而不写进配置：`pi -e npm:pi-tiaforge`。
 
-> **前提**：TiaLink 网关跑在 Windows + 博途 **V19/V20**（V21 暂不支持）的机器上，账号需在
+> **前提**：TiaLink 网关跑在 Windows + 博途 **V19 / V20 / V21** 的机器上，账号需在
 > `Siemens TIA Openness` 用户组；**未授权时只读**——能读工程、读块、读硬件树，不能改。
 > 四个云端服务要各自的 Key（微信扫码，各 100 次免费）。没装网关、没配 Key 都不影响 pi 启动，
 > 只是对应的工具不出现。

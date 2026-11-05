@@ -1,14 +1,18 @@
 {
   "name": "tiaforge",
+  "displayName": "TIA Forge",
   "description": "博途（TIA Portal）工程自动化：文档检索、LadDoc 生成块、SimaticML 渲染看图、云端仿真 PASS/FAIL、TiaLink 在真实工程里组态/编译/下载/读回。",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": {
     "name": "汇智网 (hubwiz.com)",
     "url": "https://www.hubwiz.com/"
   },
-  "homepage": "https://tia.hubwiz.com/?utm_source=workbuddy&utm_medium=plugin",
-  "repository": "https://github.com/tia-forge/codebuddy-plugins",
+  "homepage": "https://tia.hubwiz.com/?utm_source=claude-code&utm_medium=plugin",
+  "repository": "https://github.com/tia-forge/tiaforge-plugins",
   "license": "CC-BY-4.0",
+  "icon": "./.claude-plugin/icon.png",
+  "privacyPolicyUrl": "https://github.com/tia-forge/tiaforge-plugins/blob/main/plugins/tiaforge/PRIVACY.md",
+  "supportUrl": "https://github.com/tia-forge/tiaforge-plugins/issues",
   "keywords": [
     "tia-portal",
     "siemens",
@@ -18,5 +22,19 @@
     "openness",
     "mcp",
     "industrial-automation"
-  ]
+  ],
+  "userConfig": {
+    "tialink_url": {
+      "type": "string",
+      "title": "TiaLink gateway URL",
+      "description": "本机 TiaLink 网关的 MCP 端点，标准安装保持默认即可。没装 TiaLink 可留空，不影响其余四个技能。",
+      "default": "http://127.0.0.1:8080/mcp"
+    },
+    "tialink_token": {
+      "type": "string",
+      "title": "TiaLink token",
+      "description": "网关配置的 Bearer 令牌，只保存在本机安全存储。网关没开鉴权就留空。",
+      "sensitive": true
+    }
+  }
 }

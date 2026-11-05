@@ -62,7 +62,7 @@ npx skills add tia-forge/tiaforge-plugins
 |---|---|
 | 技能 ×5 | `tia-portal-docs`（2800+ 章节文档检索）、`laddoc-cloud`（LadDoc→SimaticML）、`lad-render-cloud`（SimaticML→PNG 看图核对，**计费**）、`plc-cloud-sim`（LAD/SCL 逐扫描仿真）、`tialink-tia-portal`（真实工程操作） |
 | 斜杠指令 ×4 | `/tiaforge:tia-status`（只读体检）、`/tiaforge:tia-hw-add`（机架组态）、`/tiaforge:tia-block`（建块写 SCL）、`/tiaforge:tia-verify`（三层验证） |
-| MCP | `.mcp.json` 预置 `tialink` 本地网关（`http://127.0.0.1:8080/mcp`） |
+| MCP | `.mcp.json` 预置 `tialink` 本地网关；地址与令牌走插件的 `userConfig`（`tialink_url` 默认 `http://127.0.0.1:8080/mcp`，`tialink_token` 存安全存储） |
 | Pi package | `pi-plugin/`：同样的五个技能 + 五条 MCP，`pi install npm:pi-tiaforge` 装 |
 
 技能正文是**单一真源**：与 SkillHub 上架版本同源（`sync-skills.sh` 从这里同步过去、或反向往回同步），只有埋点 `utm_source` 不同（`workbuddy-plugin` vs `skillhub`）。
@@ -71,9 +71,9 @@ npx skills add tia-forge/tiaforge-plugins
 
 | 需要什么 | 说明 |
 |---|---|
-| TiaLink 网关 | Windows + 博途 **V19/V20**（V21 不支持）+ 账号在 `Siemens TIA Openness` 组；未授权时**只读可用** |
+| TiaLink 网关 | Windows + 博途 **V19 / V20 / V21** + 账号在 `Siemens TIA Openness` 组；未授权时**只读可用** |
 | 云端四个服务 | `tia-portal-docs` / `laddoc-cloud` / `lad-render-cloud` / `plc-cloud-sim` 各自需要 API Key（微信扫码，各 100 次免费；render 每次渲染扣 1 次），见各技能正文第 1 节 |
-| 令牌 | `tialink` 用 `${TIALINK_TOKEN}` 环境变量；网关没配 token 就把 `.mcp.json` 里 `headers` 整段删掉 |
+| 令牌 | `tialink` 的地址与令牌由插件在启用时询问（`userConfig`），令牌不写进 `settings.json`；网关没开鉴权时留空 |
 
 四个云端 MCP 的地址（需要时自行加进 `~/.workbuddy/mcp.json` 或客户端配置）：
 
