@@ -58,7 +58,7 @@ Each skill talks only to the endpoint it needs, and the plugin sends nothing els
 
 Requests to the cloud endpoints carry your key in an `Authorization: Bearer` header. Project files, tag tables and block sources stay on your machine unless one of the cloud skills above is used on them.
 
-Privacy / 隐私：<https://github.com/tia-forge/tiaforge-plugins/blob/main/plugins/tiaforge/PRIVACY.md>
+Privacy / 隐私：<https://github.com/tia-forge/claude-plugin-tiaforge/blob/main/PRIVACY.md>
 
 ## Licence
 
