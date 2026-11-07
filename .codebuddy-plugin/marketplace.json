@@ -10,7 +10,7 @@
       "name": "tiaforge",
       "source": "./plugins/tiaforge",
       "description": "博途工程自动化的五个技能 + 斜杠指令：tia-portal-docs（文档）、laddoc-cloud（生成块）、lad-render-cloud（渲染看图）、plc-cloud-sim（仿真验证）、tialink（真实工程操作）。",
-      "version": "0.2.3"
+      "version": "0.2.4"
     }
   ]
 }

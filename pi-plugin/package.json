@@ -1,6 +1,6 @@
 {
   "name": "pi-tiaforge",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "TIA Forge for pi: five TIA Portal skills (docs / LadDoc ladder generation / ladder rendering / PLC cloud simulation / TiaLink gateway) plus the five matching MCP endpoints, installed as one package.",
   "type": "module",
   "keywords": [
