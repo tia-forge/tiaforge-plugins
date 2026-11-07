@@ -2,9 +2,9 @@
 name: tia-portal-docs
 slug: tia-portal-docs
 displayName: 博途文档检索（TIA Portal）
-version: 1.0.8
+version: 1.0.9
 summary: 让 AI 查博途官方编程文档而不是凭记忆猜：2800+ 编程章节（函数块、指令、数据类型、系统常量）做成一个 MCP 工具 get_docs，语义检索直接给出处。含 8 个高频提问模板与「topic 怎么写才召回准」。
-description: 检索西门子 TIA Portal（博途/博图）官方编程文档：函数块用法、指令参数与边沿语义、数据类型与取值范围、系统常量、错误代码。当用户问"这个指令怎么用""TON 和 TONR 区别""S7-1500 定时器最大时长""某个系统常量是什么"或需要核对 API 参数时使用。比模型记忆可靠，因为博途文档随版本变。
+description: 检索西门子 TIA Portal（博途/博图）官方编程文档：函数块用法、指令参数与边沿语义、数据类型与取值范围、系统常量、错误代码。当用户问"这个指令怎么用""TON 和 TONR 区别""S7-1500 定时器最大时长""某个系统常量是什么"或需要核对 API 参数时使用。比模型记忆可靠，因为博途文档随版本变。 In English — retrieve the official Siemens TIA Portal programming documentation (2800+ sections — function block usage, instruction parameters and edge semantics, data types and ranges, system constants, error codes) through one MCP tool, with the source chapter returned. Use to check how an instruction works, the difference between TON and TONR, S7-1500 timer limits, or any system constant, instead of relying on model memory.
 license: CC-BY-4.0
 tags: [博途, 博图, TIA Portal, 西门子, 指令, 文档, SCL, 数据类型]
 homepage: https://tia.hubwiz.com/ai-coding-docs?utm_source=dsh&utm_medium=plugin
@@ -140,11 +140,10 @@ claude mcp add --transport http tia https://tia.hubwiz.com/ai-coding-docs/mcp \
 | PLC 云仿真 | `@indiv-tiaforge/plc-cloud-sim` | 生成后跑 PASS/FAIL、回归、边界用例 |
 | TiaLink | `@indiv-tiaforge/tialink-tia-portal` | 在真实工程里编译、下载、读回 |
 
-装齐的方式：把下面这句发给你正在用的 AI 助手（逐个发即可）：
+装齐的方式（任选一种；都不需要执行远程脚本）：
 
-```text
-请根据 https://skillhub.cn/install/skillhub.md，安装 @indiv-tiaforge/<slug>
-```
+- SkillHub：在 https://skillhub.cn 搜 `@indiv-tiaforge/<slug>`
+- GitHub：`npx skills add tia-forge/tiaforge-plugins --skill <slug>`
 
 ## 5. 计费与获取
 

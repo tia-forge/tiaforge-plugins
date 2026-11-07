@@ -2,9 +2,9 @@
 name: lad-render-cloud
 slug: lad-render-cloud
 displayName: 梯形图渲染（SimaticML → PNG，免装博途）
-version: 1.0.1
+version: 1.0.2
 summary: 一份 SimaticML 进，真实布局的 PNG 梯形图出——触点、线圈、分支汇合、接口声明表都按工程习惯绘制，AI 助手终于能"看见"自己写的逻辑。含 scale/network 怎么用、7 个错误码怎么判、什么时候别渲染。
-description: 把 SimaticML（TIA Portal 导出的 FC/FB/OB 块 XML）渲染成 PNG 梯形图的云端 MCP 服务。当用户要"让 AI 看一眼梯形图"、"SimaticML 转 PNG"、"不装博途把块渲染成图片"、"核对 AI 生成的 LAD 逻辑"、"把梯形图贴进 PR/文档"时使用。只解析 XML 文本，不连接博途、不读写工程；不装博途也能渲染。
+description: 把 SimaticML（TIA Portal 导出的 FC/FB/OB 块 XML）渲染成 PNG 梯形图的云端 MCP 服务。当用户要"让 AI 看一眼梯形图"、"SimaticML 转 PNG"、"不装博途把块渲染成图片"、"核对 AI 生成的 LAD 逻辑"、"把梯形图贴进 PR/文档"时使用。只解析 XML 文本，不连接博途、不读写工程；不装博途也能渲染。 In English — render SimaticML — the FC/FB/OB block XML exported from TIA Portal — into a PNG ladder diagram with real layout (contacts, coils, branch merges, interface table), so an AI agent can actually see the logic it wrote. Use to review LAD logic before importing it, or to attach a ladder drawing to a PR or document. It only parses XML text — no TIA Portal needed, no project read or write.
 license: CC-BY-4.0
 tags: [梯形图, LAD, SimaticML, 渲染, PNG, 博途, 博图, PLC, MCP]
 homepage: https://tia.hubwiz.com/render/?utm_source=dsh&utm_medium=plugin
@@ -233,11 +233,10 @@ PNG 存成 <块名>_all.png 或 <块名>_net<N>.png，元数据存同名 .json�
 | PLC 云仿真 | `@indiv-tiaforge/plc-cloud-sim` | 生成后跑 PASS/FAIL、回归、边界用例 |
 | TiaLink | `@indiv-tiaforge/tialink-tia-portal` | 在真实工程里编译、下载、读回 |
 
-装齐的方式：把下面这句发给你正在用的 AI 助手（逐个发即可）：
+装齐的方式（任选一种；都不需要执行远程脚本）：
 
-```text
-请根据 https://skillhub.cn/install/skillhub.md，安装 @indiv-tiaforge/<slug>
-```
+- SkillHub：在 https://skillhub.cn 搜 `@indiv-tiaforge/<slug>`
+- GitHub：`npx skills add tia-forge/tiaforge-plugins --skill <slug>`
 
 ---
 

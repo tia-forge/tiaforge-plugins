@@ -2,9 +2,9 @@
 name: tialink-tia-portal
 slug: tialink-tia-portal
 displayName: 博途 AI 自动化（TiaLink）
-version: 1.0.9
+version: 1.0.10
 summary: 让 AI 直接操作西门子博途（TIA Portal V19 / V20 / V21）工程：组态机架与网络、建 FB/FC/DB 并写 SCL、编译、下载到 PLCSIM 仿真、读回核对，也能只读地把老工程反推成 IO 表 / 接口表 / 调用关系文档包。含前置自查与失败判读，不靠猜。
-description: 操作西门子 TIA Portal（博途/博图，V19 / V20 / V21）工程：配置硬件与网络、创建 FB/FC/DB/UDT 并写 SCL、编译、下载到 S7-PLCSIM 仿真、读回核对；只读地把老工程反推成可交付文档包（IO 表、块清单、接口表、调用关系、变量与 UDT 表）。当用户提到博途、博图、TIA Portal、西门子 PLC 自动化、SCL 编程、机架组态、Openness、读懂/梳理老工程、PLC 项目文档，或要把 PLC 工程交给 AI 操作时使用。需要本机已装 TiaLink 网关（付费软件，未授权时只读）。
+description: 操作西门子 TIA Portal（博途/博图，V19 / V20 / V21）工程：配置硬件与网络、创建 FB/FC/DB/UDT 并写 SCL、编译、下载到 S7-PLCSIM 仿真、读回核对；只读地把老工程反推成可交付文档包（IO 表、块清单、接口表、调用关系、变量与 UDT 表）。当用户提到博途、博图、TIA Portal、西门子 PLC 自动化、SCL 编程、机架组态、Openness、读懂/梳理老工程、PLC 项目文档，或要把 PLC 工程交给 AI 操作时使用。需要本机已装 TiaLink 网关（付费软件，未授权时只读）。 In English — operate Siemens TIA Portal (V19 / V20 / V21) projects — configure hardware and network, create FB/FC/DB/UDT with SCL, compile, download to S7-PLCSIM and read back to verify; read-only reverse engineering of a legacy project into deliverable docs (IO list, block list, interface tables, call graph, tags and UDT tables). Use for Siemens PLC automation, TIA Portal Openness, SCL programming, rack configuration, understanding or documenting an old PLC project, or handing a real PLC project to an AI agent. Requires the TiaLink gateway installed locally (paid; read-only without a license).
 license: CC-BY-4.0
 tags: [博途, 博图, TIA Portal, SCL, 西门子, PLC, Openness, 自动化]
 homepage: https://tia.hubwiz.com/tia-link?utm_source=dsh&utm_medium=plugin
@@ -100,7 +100,7 @@ AI 客户端 ──MCP(Streamable HTTP, /mcp + Bearer)──► TiaLink 网关 �
 ### 1.2 客户端只支持 stdio
 
 ```bash
-TIALINK_URL=http://192.168.1.78:8080/mcp TIALINK_TOKEN=<你的令牌> npx tialink-mcp
+TIALINK_URL=http://192.168.1.78:8080/mcp TIALINK_TOKEN=<你的令牌> npx tialink-mcp@0.1.2
 ```
 
 ```json
@@ -108,7 +108,7 @@ TIALINK_URL=http://192.168.1.78:8080/mcp TIALINK_TOKEN=<你的令牌> npx tialin
   "mcpServers": {
     "tialink": {
       "command": "npx",
-      "args": ["-y", "tialink-mcp"],
+      "args": ["-y", "tialink-mcp@0.1.2"],
       "env": { "TIALINK_URL": "http://192.168.1.78:8080/mcp", "TIALINK_TOKEN": "<你的令牌>" }
     }
   }
@@ -121,7 +121,7 @@ TIALINK_URL=http://192.168.1.78:8080/mcp TIALINK_TOKEN=<你的令牌> npx tialin
 
 ```bash
 # 有 Node：一条命令出「服务器名 + 协议版本 + 工具列表」
-TIALINK_URL=http://192.168.1.78:8080/mcp TIALINK_TOKEN=<你的令牌> npx tialink-mcp --check
+TIALINK_URL=http://192.168.1.78:8080/mcp TIALINK_TOKEN=<你的令牌> npx tialink-mcp@0.1.2 --check
 ```
 
 ```bash
@@ -294,7 +294,7 @@ curl -sS -X POST "http://192.168.1.78:8080/mcp" \
 | 未授权 | **只读可用**：能连、能读工程、能读块和硬件树；写入类操作需要授权 |
 | 授权 | 打开 `http://localhost:8080/` → **机器码** + 下载 **`.tlreq`** 请求文件 → 连同订单号发 support@hubwiz.com → 回传与机器绑定的 `.lic`，完全离线有效 |
 | 安装要点 | 先拷到最终目录（如 `C:\Program Files\TiaLink\`）再运行（Openness 白名单按路径+哈希登记）；跑一次 `TiaLink.Helper.exe` 一键修复；**以普通用户启动 `TiaLink.exe`，绝不要用管理员** |
-| stdio 适配器 / 桌面包 | `npx tialink-mcp`（MIT）、`.mcpb` 桌面包、Docker 镜像，见 https://github.com/tia-forge/tialink |
+| stdio 适配器 / 桌面包 | `npx tialink-mcp@0.1.2`（MIT，钉版本；升级时改这一处）、`.mcpb` 桌面包、Docker 镜像，见 https://github.com/tia-forge/tialink |
 
 > 该技能本身是**知识包**（CC BY 4.0），不含网关程序、不含授权；网关是商业软件，二者分开。
 
@@ -312,11 +312,10 @@ curl -sS -X POST "http://192.168.1.78:8080/mcp" \
 | PLC 云仿真 | `@indiv-tiaforge/plc-cloud-sim` | 生成后跑 PASS/FAIL、回归、边界用例 |
 | TiaLink **← 你在这里** | `@indiv-tiaforge/tialink-tia-portal` | 在真实工程里编译、下载、读回 |
 
-装齐的方式：把下面这句发给你正在用的 AI 助手（逐个发即可）：
+装齐的方式（任选一种；都不需要执行远程脚本）：
 
-```text
-请根据 https://skillhub.cn/install/skillhub.md，安装 @indiv-tiaforge/<slug>
-```
+- SkillHub：在 https://skillhub.cn 搜 `@indiv-tiaforge/<slug>`
+- GitHub：`npx skills add tia-forge/tiaforge-plugins --skill <slug>`
 
 ## 7. 三条常见误会
 

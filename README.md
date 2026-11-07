@@ -1,5 +1,7 @@
 # TIA Forge 插件市场（WorkBuddy / CodeBuddy Code）
 
+[![skills.sh](https://www.skills.sh/b/tia-forge/tiaforge-plugins)](https://www.skills.sh/tia-forge/tiaforge-plugins)
+
 西门子博途（TIA Portal）工程自动化的**一套插件**：五个技能 + 四个斜杠指令 + 一条 MCP 连接。
 WorkBuddy 与 CodeBuddy Code 共用同一套插件运行时，所以**这一个仓库同时服务两个客户端**。
 
@@ -30,11 +32,11 @@ WorkBuddy 与 CodeBuddy Code 共用同一套插件运行时，所以**这一个�
 
 | zip | 装上之后能干什么 |
 |---|---|
-| `tia-portal-docs-1.0.8.zip` | 查博途官方文档（2 800+ 章节） |
-| `laddoc-cloud-1.0.7.zip` | LadDoc → 博途可导入 SimaticML |
-| `lad-render-cloud-1.0.1.zip` | SimaticML → PNG，导入前先看一眼 |
-| `plc-cloud-sim-1.0.7.zip` | 云端逐扫描仿真 + 场景 PASS/FAIL |
-| `tialink-tia-portal-1.0.7.zip` | 操作真实工程（本机装 TiaLink） |
+| `tia-portal-docs-1.0.9.zip` | 查博途官方文档（2 800+ 章节） |
+| `laddoc-cloud-1.0.8.zip` | LadDoc → 博途可导入 SimaticML |
+| `lad-render-cloud-1.0.2.zip` | SimaticML → PNG，导入前先看一眼 |
+| `plc-cloud-sim-1.0.8.zip` | 云端逐扫描仿真 + 场景 PASS/FAIL |
+| `tialink-tia-portal-1.0.10.zip` | 操作真实工程（本机装 TiaLink） |
 
 只想要技能的话 B 就够（四个斜杠指令 `/tiaforge:*` 要 A 方式才有）。
 

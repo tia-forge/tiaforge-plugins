@@ -2,9 +2,9 @@
 name: plc-cloud-sim
 slug: plc-cloud-sim
 displayName: 梯形图/SCL 云仿真（免装博途）
-version: 1.0.7
+version: 1.0.8
 summary: 不装博途也能跑 PLC 逻辑：把 SCL 或 LadDoc 梯形图交给云端 MCP，逐扫描周期执行、回读变量、跑声明式场景拿 PASS/FAIL。含六个工具怎么选、场景怎么设计、报告怎么读。
-description: 用云端 MCP 仿真 PLC 程序：校验 SCL 与 LadDoc 梯形图、逐扫描周期运行、回读变量与诊断、执行声明式场景（用例/穷举/模糊/不变量）得到 PASS/FAIL 报告。当用户要"验证 AI 写的 PLC 代码"、"不装博途先跑一遍逻辑"、"起保停/状态机回归"、"给梯形图写测试用例"时使用。不需要博途，程序片段会上传云端。
+description: 用云端 MCP 仿真 PLC 程序：校验 SCL 与 LadDoc 梯形图、逐扫描周期运行、回读变量与诊断、执行声明式场景（用例/穷举/模糊/不变量）得到 PASS/FAIL 报告。当用户要"验证 AI 写的 PLC 代码"、"不装博途先跑一遍逻辑"、"起保停/状态机回归"、"给梯形图写测试用例"时使用。不需要博途，程序片段会上传云端。 In English — simulate and test PLC programs in the cloud over MCP — validate SCL and LadDoc ladder logic, run it scan cycle by scan cycle, read back variables and diagnostics, and execute declarative scenarios (cases / exhaustive / fuzzy / invariants) to get PASS/FAIL reports. Use to verify AI-written PLC code, test a start-stop latch or state machine regression, or write test cases for ladder logic without installing TIA Portal. Program snippets are uploaded to the cloud service.
 license: CC-BY-4.0
 tags: [梯形图, SCL, 仿真, 博途, 博图, PLC, 测试, 回归]
 homepage: https://tia.hubwiz.com/sim?utm_source=dsh&utm_medium=plugin
@@ -168,11 +168,10 @@ metadata:
 | PLC 云仿真 **← 你在这里** | `@indiv-tiaforge/plc-cloud-sim` | 生成后跑 PASS/FAIL、回归、边界用例 |
 | TiaLink | `@indiv-tiaforge/tialink-tia-portal` | 在真实工程里编译、下载、读回 |
 
-装齐的方式：把下面这句发给你正在用的 AI 助手（逐个发即可）：
+装齐的方式（任选一种；都不需要执行远程脚本）：
 
-```text
-请根据 https://skillhub.cn/install/skillhub.md，安装 @indiv-tiaforge/<slug>
-```
+- SkillHub：在 https://skillhub.cn 搜 `@indiv-tiaforge/<slug>`
+- GitHub：`npx skills add tia-forge/tiaforge-plugins --skill <slug>`
 
 ## 7. 获取与计费
 

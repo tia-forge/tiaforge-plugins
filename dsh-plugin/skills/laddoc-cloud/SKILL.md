@@ -2,9 +2,9 @@
 name: laddoc-cloud
 slug: laddoc-cloud
 displayName: 梯形图生成（博途可导入）
-version: 1.0.7
+version: 1.0.8
 summary: 让 AI 直接产出「能导入博途」的梯形图块：写 LadDoc（JSON 格式的 PLC 梯形图文档）→ 按 lad-ir D9 规则校验 → 确定性生成 V19 SimaticML（FC/FB/OB）。有 issue 就不出 XML，避免导入被拒。
-description: 把 LadDoc（JSON 格式的 PLC 梯形图文档）校验后确定性生成为 TIA Portal V19 可直接导入的 SimaticML 块（FC/FB/OB）。当用户要"用 AI 生成梯形图块"、"让 AI 写 LAD 并导入博途"、"LadDoc 校验/生成 SimaticML"、"批量生成 PLC 块"时使用。不需要博途即可生成，导入时才需要博途 V19。
+description: 把 LadDoc（JSON 格式的 PLC 梯形图文档）校验后确定性生成为 TIA Portal V19 可直接导入的 SimaticML 块（FC/FB/OB）。当用户要"用 AI 生成梯形图块"、"让 AI 写 LAD 并导入博途"、"LadDoc 校验/生成 SimaticML"、"批量生成 PLC 块"时使用。不需要博途即可生成，导入时才需要博途 V19。 In English — generate TIA Portal V19-importable SimaticML blocks (FC/FB/OB) deterministically from LadDoc — a JSON document describing ladder logic — after validating it first, so no XML is emitted while issues remain. Use to have an AI write ladder logic (LAD), validate LadDoc, or batch-generate PLC blocks before importing them into TIA Portal.
 license: CC-BY-4.0
 tags: [梯形图, LAD, 博途, 博图, SimaticML, PLC, 代码生成]
 homepage: https://tia.hubwiz.com/lad?utm_source=dsh&utm_medium=plugin
@@ -155,11 +155,10 @@ valid=true 之后再调 lad_generate，把返回的 XML 存成 .xml，并告诉�
 | PLC 云仿真 | `@indiv-tiaforge/plc-cloud-sim` | 生成后跑 PASS/FAIL、回归、边界用例 |
 | TiaLink | `@indiv-tiaforge/tialink-tia-portal` | 在真实工程里编译、下载、读回 |
 
-装齐的方式：把下面这句发给你正在用的 AI 助手（逐个发即可）：
+装齐的方式（任选一种；都不需要执行远程脚本）：
 
-```text
-请根据 https://skillhub.cn/install/skillhub.md，安装 @indiv-tiaforge/<slug>
-```
+- SkillHub：在 https://skillhub.cn 搜 `@indiv-tiaforge/<slug>`
+- GitHub：`npx skills add tia-forge/tiaforge-plugins --skill <slug>`
 
 ## 8. 获取与计费
 
