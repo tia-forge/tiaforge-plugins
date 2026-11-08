@@ -1,6 +1,6 @@
 # dsh-tiaforge —— DeepSeek Harness 插件
 
-把 TIA Forge 的**五个技能**和**五个 MCP 端点**打成**一个组合包（bundle）**：
+把 TIA Forge 的**五个工具技能 + 一个学习教练**和**五个 MCP 端点**打成**一个组合包（bundle）**：
 装一次，DSH 里就有「查文档 → 生成梯形图 → 看图核对 → 跑仿真 → 操作真实工程」这条链。
 
 > **为什么需要它**：DSH 本身支持 skill（`ctx.skills` + 文件系统提供方，扫 `<project>/.dsh/skills`、`.agents/skills`、`~/.dsh/skills`），
@@ -16,7 +16,7 @@
 2. 输入 `dsh-tiaforge`；
 3. 点安装 → **完全退出并重开** DSH（MCP 连接是在启动时建立的）。
 
-装完模型侧就能看到 **五个技能 + 五个已接入的服务**，全程不用开终端、不用改配置文件。
+装完模型侧就能看到 **六个技能 + 五个已接入的服务**，全程不用开终端、不用改配置文件。
 
 ### B. 命令行（写脚本、批量装、或 `dsh web` 里找不到插件入口时）
 
@@ -104,7 +104,7 @@ export TIA_RENDER_KEY=...   # 唯一计费的：每次渲染扣 1 次，先扣�
 # 1) 组合后的配置里应该有这 6 行
 dsh --profile web --dump-config | grep -n tiaforge
 
-# 2) 起来之后，模型侧应该能用 skill 工具看到五个技能
+# 2) 起来之后，模型侧应该能用 skill 工具看到六个技能
 dsh web
 #   对话里问：「列出你能用的 TIA 相关技能」
 ```

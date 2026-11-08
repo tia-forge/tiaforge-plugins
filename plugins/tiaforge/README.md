@@ -1,6 +1,6 @@
 # TIA Forge
 
-Siemens TIA Portal (博途) automation for Claude Code: five skills and four slash commands that search TIA documentation, generate LAD/SCL blocks, render SimaticML to PNG for a visual check, run cloud simulation, and drive a real TIA Portal project through the TiaLink MCP gateway. 博途工程自动化：从查文档、生成块、看图核对、仿真验证，一直到在真实工程里组态、编译、下载、读回。
+Siemens TIA Portal (博途) automation for Claude Code: five tool skills, one learning coach, and four slash commands that search TIA documentation, generate LAD/SCL blocks, render SimaticML to PNG for a visual check, run cloud simulation, drive a real TIA Portal project through the TiaLink MCP gateway, and train a beginner one checkpoint at a time with evidence-based pass/fail grading. 博途工程自动化：从查文档、生成块、看图核对、仿真验证，一直到在真实工程里组态、编译、下载、读回。
 
 ## What's inside
 
@@ -11,6 +11,7 @@ Siemens TIA Portal (博途) automation for Claude Code: five skills and four sla
 | `lad-render-cloud` skill | Render SimaticML back to a PNG so Claude can look at the diagram it produced (metered) |
 | `plc-cloud-sim` skill | Run the block scan-by-scan with test inputs and return PASS/FAIL per case |
 | `tialink-tia-portal` skill | Operate a real project through the TiaLink gateway: hardware and networks, FB/FC/DB, compile, download, read back |
+| `plc-programming-ai-tutor` skill | Train a beginner one checkpoint at a time: diagnose the level, hand out one task with pass/fail criteria, grade against evidence, keep a persistent `learn-progress.md`. 17 hands-on lesson pages included; works without TIA Portal (cloud sim or paper) |
 | `/tiaforge:tia-status` | Read-only health check: gateway, TIA version, project, device and block lists |
 | `/tiaforge:tia-hw-add` | Configure a rack and network in the open project |
 | `/tiaforge:tia-block` | Create a block and write its SCL |
