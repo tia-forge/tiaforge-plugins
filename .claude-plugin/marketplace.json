@@ -10,7 +10,7 @@
       "name": "tiaforge",
       "source": "./plugins/tiaforge",
       "description": "博途工程自动化：五个工具技能 + 一个学习教练，加斜杠指令。工具链 tia-portal-docs（文档）、laddoc-cloud（生成块）、lad-render-cloud（渲染看图）、plc-cloud-sim（仿真验证）、tialink（真实工程操作）；plc-programming-ai-tutor（一对一训练：按判据判 PASS/FAIL，卡住只给提示不代写）。",
-      "version": "0.2.5"
+      "version": "0.3.0"
     }
   ]
 }
