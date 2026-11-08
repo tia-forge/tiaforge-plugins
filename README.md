@@ -1,9 +1,8 @@
-# TIA Forge 插件市场（WorkBuddy / CodeBuddy Code）
+# TIA Forge 插件市场（WorkBuddy）
 
 [![skills.sh](https://www.skills.sh/b/tia-forge/tiaforge-plugins)](https://www.skills.sh/tia-forge/tiaforge-plugins)
 
-西门子博途（TIA Portal）工程自动化的**一套插件**：五个技能 + 四个斜杠指令 + 一条 MCP 连接。
-WorkBuddy 与 CodeBuddy Code 共用同一套插件运行时，所以**这一个仓库同时服务两个客户端**。
+西门子博途（TIA Portal）工程自动化的**一套插件**：五个工具技能 + 一个学习教练 + 四个斜杠指令 + 一条 MCP 连接。
 
 ```
 查文档 → 生成梯形图块 → 渲染看图核对 → 云端仿真跑 PASS/FAIL → 在真实工程里编译/下载/读回
@@ -37,6 +36,7 @@ WorkBuddy 与 CodeBuddy Code 共用同一套插件运行时，所以**这一个�
 | `lad-render-cloud-1.0.2.zip` | SimaticML → PNG，导入前先看一眼 |
 | `plc-cloud-sim-1.0.8.zip` | 云端逐扫描仿真 + 场景 PASS/FAIL |
 | `tialink-tia-portal-1.0.10.zip` | 操作真实工程（本机装 TiaLink） |
+| `plc-programming-ai-tutor-1.0.0.zip` | PLC 编程一对一训练：按判据判 PASS/FAIL，卡住只给提示不代写（含 17 页手把手） |
 
 只想要技能的话 B 就够（四个斜杠指令 `/tiaforge:*` 要 A 方式才有）。
 
