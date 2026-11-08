@@ -65,7 +65,7 @@ npx skills add tia-forge/tiaforge-plugins
 | 技能 ×5 | `tia-portal-docs`（2800+ 章节文档检索）、`laddoc-cloud`（LadDoc→SimaticML）、`lad-render-cloud`（SimaticML→PNG 看图核对，**计费**）、`plc-cloud-sim`（LAD/SCL 逐扫描仿真）、`tialink-tia-portal`（真实工程操作） |
 | 斜杠指令 ×4 | `/tiaforge:tia-status`（只读体检）、`/tiaforge:tia-hw-add`（机架组态）、`/tiaforge:tia-block`（建块写 SCL）、`/tiaforge:tia-verify`（三层验证） |
 | MCP | `.mcp.json` 预置 `tialink` 本地网关；地址与令牌走插件的 `userConfig`（`tialink_url` 默认 `http://127.0.0.1:8080/mcp`，`tialink_token` 存安全存储） |
-| Pi package | `pi-plugin/`：同样的五个技能 + 五条 MCP，`pi install npm:pi-tiaforge` 装 |
+| Pi package | `pi-plugin/`：同样的六个技能（五个工具 + 一个学习教练）+ 五条 MCP，`pi install npm:pi-tiaforge` 装 |
 
 技能正文是**单一真源**：与 SkillHub 上架版本同源（`sync-skills.sh` 从这里同步过去、或反向往回同步），只有埋点 `utm_source` 不同（`workbuddy-plugin` vs `skillhub`）。
 
