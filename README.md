@@ -60,8 +60,7 @@ npx skills add tia-forge/tiaforge-plugins
 
 ### E. 豆包（豆包工作）
 
-豆包也有「插件 · 技能 · 伙伴」，而且是**零审核**的本地路径：传上去自己用，不进商店（商店上架要 ISV 资质）。
-6 个 zip 已挂在 [release](https://github.com/tia-forge/tiaforge-plugins/releases/tag/doubao-1.0)，步骤见 [`doubao/README.md`](./doubao/README.md)：
+豆包也能装这套技能，6 个 zip 已挂在 [release](https://github.com/tia-forge/tiaforge-plugins/releases/tag/doubao-1.0)，详细说明见 [`doubao/README.md`](./doubao/README.md)：
 
 1. 豆包客户端 → 左侧「插件 · 技能 · 伙伴」→ 技能 → 右上角「+ 添加」→「上传技能」→ 选 zip（不用解压）；
 2. 建议先装 `tia-portal-docs` 和 `tialink-tia-portal`；
