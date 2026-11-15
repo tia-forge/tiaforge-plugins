@@ -64,11 +64,11 @@ npx skills add tia-forge/tiaforge-plugins
 
 ### E. 豆包（豆包工作）
 
-豆包也能装这套技能，6 个 zip 已挂在 [release](https://github.com/tia-forge/tiaforge-plugins/releases/tag/doubao-1.0)，详细说明见 [`doubao/README.md`](./doubao/README.md)：
+豆包有两种扩展，**配合用**：连接器给工具、技能给流程。完整表格见 [`doubao/README.md`](./doubao/README.md)。
 
-1. 豆包客户端 → 左侧「插件 · 技能 · 伙伴」→ 技能 → 右上角「+ 添加」→「上传技能」→ 选 zip（不用解压）；
-2. 建议先装 `tia-portal-docs` 和 `tialink-tia-portal`；
-3. 验证：说「连接 http://127.0.0.1:8080/mcp，告诉我现在打开的是哪个工程、有几台设备」——报出你屏幕上的工程名才算接上。
+- **加连接器**：左侧「插件 · 技能 · 伙伴」→ 插件 → `+ 添加` → 新建自定义连接器（HTTP：填 URL + `Authorization: Bearer <key>`）；5 个端点：`127.0.0.1:8080/mcp`、`/ai-coding-docs/mcp`、`/sim/mcp`、`/lad/mcp`、`/render/mcp`
+- **装技能**：技能 → `+ 添加` → 上传技能 → 选 [release](https://github.com/tia-forge/tiaforge-plugins/releases/tag/doubao-1.0) 里的 zip（不用解压）
+- **验证**：说「连接 http://127.0.0.1:8080/mcp，告诉我现在打开的是哪个工程、有几台设备」——报得出你屏幕上的工程名才算接上
 
 > TiaLink 是本地网关，必须与博途同机；豆包是云端模型，所以要用**桌面客户端**（能访问 `127.0.0.1`）。
 
