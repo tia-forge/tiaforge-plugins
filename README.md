@@ -69,8 +69,9 @@ npx skills add tia-forge/tiaforge-plugins
 - **一次装完**：上传 [`tiaforge-doubao-plugin-1.0.0.zip`](https://github.com/tia-forge/tiaforge-plugins/releases/download/doubao-1.0/tiaforge-doubao-plugin-1.0.0.zip)（插件页 → `+ 添加` → 上传插件包）—— 含 6 个技能 + 4 个云服务连接 + 鉴权声明
 - ⚠️ 技能都在包里（含「操作真实工程」那条），但它连的 **TiaLink 在 127.0.0.1，规范禁止写进 `mcp.json`**；装完包后再加**一条**自定义连接器（`http://127.0.0.1:8080/mcp` 或 `npx -y tialink-mcp`）即可全通
 
-- **加连接器**：左侧「插件 · 技能 · 伙伴」→ 插件 → `+ 添加` → 新建自定义连接器（HTTP：填 URL + `Authorization: Bearer <key>`）；5 个端点：`127.0.0.1:8080/mcp`、`/ai-coding-docs/mcp`、`/sim/mcp`、`/lad/mcp`、`/render/mcp`
-- **装技能**：技能 → `+ 添加` → 上传技能 → 选 [release](https://github.com/tia-forge/tiaforge-plugins/releases/tag/doubao-1.0) 里的 zip（不用解压）
+- **装插件包（推荐）**：插件页 → `+ 添加` → 上传插件包 → 选上面的 zip（6 技能 + 4 云连接一次装完）
+- **再补一条连接器**：插件页 → `+ 添加` → 新建自定义连接器 → HTTP：`http://127.0.0.1:8080/mcp` + `Authorization: Bearer <token>`（这是 TiaLink，规范不允许写进插件包）
+- **备选（散装）**：技能页 → 上传技能 → 选 [release](https://github.com/tia-forge/tiaforge-plugins/releases/tag/doubao-1.0) 里的单个 zip
 - **验证**：说「连接 http://127.0.0.1:8080/mcp，告诉我现在打开的是哪个工程、有几台设备」——报得出你屏幕上的工程名才算接上
 
 > TiaLink 是本地网关，必须与博途同机；豆包是云端模型，所以要用**桌面客户端**（能访问 `127.0.0.1`）。
