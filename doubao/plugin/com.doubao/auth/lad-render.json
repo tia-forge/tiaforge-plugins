@@ -1,0 +1,14 @@
+{
+  "credentials": [
+    {
+      "id": "apiKey",
+      "label": "API Key",
+      "description": "在 https://tia.hubwiz.com/tia-link 扫码领取（每个服务 100 次免费）",
+      "required": true,
+      "secret": true
+    }
+  ],
+  "injections": [
+    { "target": "header", "name": "Authorization", "value": "Bearer ${apiKey}" }
+  ]
+}

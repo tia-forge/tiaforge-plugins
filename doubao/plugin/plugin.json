@@ -1,0 +1,27 @@
+{
+  "name": "tiaforge",
+  "version": "1.0.0",
+  "description": "让豆包读写西门子博途（TIA Portal）工程：查文档、生成梯形图、导入前先看图、云端逐扫描仿真。",
+  "extensions": {
+    "com.doubao": {
+      "mcpServers": {
+        "tia-docs": {
+          "displayName": { "zh": "博途文档检索" },
+          "displayDescription": { "zh": "检索西门子博途编程文档与指令说明（2 800+ 章节）。" }
+        },
+        "plc-sim": {
+          "displayName": { "zh": "PLC 云仿真" },
+          "displayDescription": { "zh": "在云端逐扫描运行梯形图逻辑，按场景给出 PASS/FAIL。" }
+        },
+        "laddoc": {
+          "displayName": { "zh": "LadDoc 转 SimaticML" },
+          "displayDescription": { "zh": "把 JSON 梯形图转成可导入博途的 SimaticML。" }
+        },
+        "lad-render": {
+          "displayName": { "zh": "梯形图渲染" },
+          "displayDescription": { "zh": "把 SimaticML 渲染成 PNG，导入前先看一眼（按次计费）。" }
+        }
+      }
+    }
+  }
+}
