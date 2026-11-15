@@ -1,4 +1,4 @@
-# TIA Forge 插件市场（WorkBuddy）
+# TIA Forge：把博途交给 AI 客户端
 
 [![skills.sh](https://www.skills.sh/b/tia-forge/tiaforge-plugins)](https://www.skills.sh/tia-forge/tiaforge-plugins)
 
@@ -9,6 +9,10 @@
 ```
 
 ## 装法（先试界面，界面走不通再用命令行）
+
+**按你的客户端装：** [WorkBuddy](#a-桌面端界面装推荐三下点完) ｜ [DSH](./dsh-plugin) ｜ [豆包](./doubao/README.md) ｜ [pi](./pi-plugin) ｜ [Claude Code / Cursor / Codex](#d-其他-skill-客户端claude-code--cursor--codex--cline-等)
+
+
 
 ### A. 桌面端界面装（推荐，三下点完）
 
