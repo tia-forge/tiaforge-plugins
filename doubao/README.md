@@ -9,7 +9,26 @@
 
 ---
 
-## 一、加 5 个连接器（插件页，填表）
+## 零、一次装完：上传插件包（4 个云服务 + 6 个技能）
+
+下载 [`tiaforge-doubao-plugin-1.0.0.zip`](https://github.com/tia-forge/tiaforge-plugins/releases/download/doubao-1.0/tiaforge-doubao-plugin-1.0.0.zip)（41 KB）→ 客户端「插件」页 →「+ 添加」→ 上传插件包 → 选 zip，不用解压。
+
+包里有什么：
+
+- **6 个技能**（`skills/`）
+- **4 个云服务连接**（`mcp.json`）：文档检索 / 云仿真 / LadDoc / 梯形图渲染
+- **4 份鉴权声明**（`com.doubao/auth/*.json`）：装上后每个服务会问你要一次 API Key（各 100 次免费）
+
+⚠️ **包里没有 TiaLink，这是规范限制，不是漏装**：`mcp.json` 的 `url` 必须是**公网 HTTPS 绝对地址**，**禁止 localhost / 127.0.0.1 / ::1**，也不支持本地进程形式。所以"操作真实工程"必须单独加一个自定义连接器：
+
+- HTTP：`http://127.0.0.1:8080/mcp` + Header `Authorization: Bearer <你的 token>`
+- 或 STDIO：`npx -y tialink-mcp`（环境变量 `TIALINK_URL` / `TIALINK_TOKEN`）
+
+两种形态的分工就是这一条决定的：**插件包一次性给四个云服务 + 六个技能；本机那一条靠自定义连接器。**
+
+---
+
+## 一、单独加连接器（插件页，填表）
 
 左侧「**插件 · 技能 · 伙伴**」→「**插件**」→ 右上角「**+ 添加**」→「**新建自定义连接器**」，按下表填。
 
