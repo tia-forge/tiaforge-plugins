@@ -67,7 +67,7 @@ npx skills add tia-forge/tiaforge-plugins
 豆包有两种扩展，**配合用**：连接器给工具、技能给流程。完整说明见 [`doubao/README.md`](./doubao/README.md)。
 
 - **一次装完**：上传 [`tiaforge-doubao-plugin-1.0.0.zip`](https://github.com/tia-forge/tiaforge-plugins/releases/download/doubao-1.0/tiaforge-doubao-plugin-1.0.0.zip)（插件页 → `+ 添加` → 上传插件包）—— 含 6 个技能 + 4 个云服务连接 + 鉴权声明
-- ⚠️ 包里**没有 TiaLink**：规范要求 `mcp.json` 的 URL 是公网 HTTPS、禁止 localhost，所以"操作真实工程"要单独加一个自定义连接器（`http://127.0.0.1:8080/mcp` 或 `npx -y tialink-mcp`）
+- ⚠️ 技能都在包里（含「操作真实工程」那条），但它连的 **TiaLink 在 127.0.0.1，规范禁止写进 `mcp.json`**；装完包后再加**一条**自定义连接器（`http://127.0.0.1:8080/mcp` 或 `npx -y tialink-mcp`）即可全通
 
 - **加连接器**：左侧「插件 · 技能 · 伙伴」→ 插件 → `+ 添加` → 新建自定义连接器（HTTP：填 URL + `Authorization: Bearer <key>`）；5 个端点：`127.0.0.1:8080/mcp`、`/ai-coding-docs/mcp`、`/sim/mcp`、`/lad/mcp`、`/render/mcp`
 - **装技能**：技能 → `+ 添加` → 上传技能 → 选 [release](https://github.com/tia-forge/tiaforge-plugins/releases/tag/doubao-1.0) 里的 zip（不用解压）
