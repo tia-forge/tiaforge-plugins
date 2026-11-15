@@ -1,6 +1,6 @@
 {
   "name": "tiaforge",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "让豆包读写西门子博途（TIA Portal）工程：查文档、生成梯形图、导入前先看图、云端逐扫描仿真。",
   "extensions": {
     "com.doubao": {
@@ -10,7 +10,7 @@
             "zh": "博途工程直连（TiaLink）"
           },
           "displayDescription": {
-            "zh": "连本机或局域网的 TiaLink 网关，直接读写博途工程：建块、写 SCL、编译、下载仿真、读回。默认 http://127.0.0.1:8080/mcp，网关在别的机器就把 IP 改成那台机器的。"
+            "zh": "连本机或局域网的 TiaLink 网关，直接读写博途工程：建块、写 SCL、编译、下载仿真、读回。默认 http://127.0.0.1:8080/mcp；网关在别的机器就改成那台的 IP。网关开了令牌鉴权时才需要加 Authorization 头。"
           }
         },
         "tia-docs": {
