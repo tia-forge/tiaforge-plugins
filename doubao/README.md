@@ -9,27 +9,30 @@
 
 ---
 
-## 零、一次装完（推荐）：上传插件包 —— 6 技能 + 4 个云连接
+## 零、一次装完（推荐）：上传插件包 —— 6 技能 + 5 个连接
 
-下载 [`tiaforge-doubao-plugin-1.0.0.zip`](https://github.com/tia-forge/tiaforge-plugins/releases/download/doubao-1.0/tiaforge-doubao-plugin-1.0.0.zip)（41 KB）→ 客户端「插件」页 →「+ 添加」→ 上传插件包 → 选 zip，不用解压。
+下载 [`tiaforge-doubao-plugin-1.0.1.zip`](https://github.com/tia-forge/tiaforge-plugins/releases/download/doubao-1.0/tiaforge-doubao-plugin-1.0.1.zip)（42 KB）→ 客户端「插件」页 →「+ 添加」→ 上传插件包 → 选 zip，不用解压。
 
 包里有什么：
 
 - **6 个技能**（`skills/`）
-- **4 个云服务连接**（`mcp.json`）：文档检索 / 云仿真 / LadDoc / 梯形图渲染
-- **4 份鉴权声明**（`com.doubao/auth/*.json`）：装上后每个服务会问你要一次 API Key（各 100 次免费）
+- **5 个服务连接**（`mcp.json`）：**TiaLink 本机网关** + 文档检索 + 云仿真 + LadDoc + 梯形图渲染
+- **5 份鉴权声明**（`com.doubao/auth/*.json`）：装上后每个服务会问你一次 Key / 令牌（云端四个各 100 次免费）
 
-⚠️ **技能都在包里，缺的只是 TiaLink 那一条"连接"**：包里有 6 个技能，包括「操作真实工程」那一条（`skills/tialink-tia-portal`）。但它要连的 TiaLink 跑在 `127.0.0.1:8080`，而规范要求 `mcp.json` 的 `url` 必须是**公网 HTTPS 绝对地址**，**禁止 localhost / 回环 IP**，也不支持本地进程形式。所以装完包之后，再手工加**一条**自定义连接器，6 个技能就全通了：
+### 唯一要改的地方：TiaLink 的 IP
 
-- HTTP：`http://127.0.0.1:8080/mcp` + Header `Authorization: Bearer <你的 token>`
-- **网关不在本机**时（博途装在另一台 Windows），把地址换成它的局域网 IP，例如 `http://192.168.1.110:8080/mcp` —— 只要这台机器能访问到就行
-- 或 STDIO：`npx -y tialink-mcp`（环境变量 `TIALINK_URL` / `TIALINK_TOKEN`）
+包里的 TiaLink 默认写 `http://127.0.0.1:8080/mcp`。**网关不在你这台机器上时，把它改成那台 Windows 的局域网 IP**，例如 `http://192.168.1.110:8080/mcp`：
 
-> **加完必须完全退出豆包客户端再打开**，MCP 连接是启动时建立的；不重启的话当前会话认不到 `tialink` 的工具（会表现得像没装上）。
->
-> 懒人做法：装完插件包，直接在对话里说「网关在 192.168.1.110:8080」——它会自己把这一条写进 `mcp.json` 和 `plugin.json`，改完提示你重启（原生实测，2026-11-15）。
+```
+…\workspace\plugins\<id>\mcp.json      ← 改这一行
+…\workspace\plugins\<id>\plugin.json   ← 只改 IP 的话这里不用动
+```
 
-所以分工是：**插件包 = 6 个技能 + 4 个云服务连接；本机那一条连接器自己加一次。**
+或者更省事：**直接在对话里说「网关在 192.168.1.110:8080」，它会自己改完并提示你重启**（2026-11-15 原生实测，它还会先把原文件备份一份）。
+
+> **改完必须完全退出豆包客户端再打开**，MCP 连接是启动时建立的；不重启的话当前会话认不到 `tialink` 的工具，表现得像没装上。
+
+> 如果这一版客户端拒绝带 `127.0.0.1` 的包（部分版本会按公网规则校验），用 [`1.0.0`](https://github.com/tia-forge/tiaforge-plugins/releases/download/doubao-1.0/tiaforge-doubao-plugin-1.0.0.zip)（只有 4 个云服务），再按下面第一节手工加一条 TiaLink。
 
 ---
 

@@ -1,8 +1,24 @@
 {
   "mcpServers": {
-    "tia-docs":   { "type": "streamable-http", "url": "https://tia.hubwiz.com/ai-coding-docs/mcp" },
-    "plc-sim":    { "type": "streamable-http", "url": "https://tia.hubwiz.com/sim/mcp" },
-    "laddoc":     { "type": "streamable-http", "url": "https://tia.hubwiz.com/lad/mcp" },
-    "lad-render": { "type": "streamable-http", "url": "https://tia.hubwiz.com/render/mcp" }
+    "tialink": {
+      "type": "streamable-http",
+      "url": "http://127.0.0.1:8080/mcp"
+    },
+    "tia-docs": {
+      "type": "streamable-http",
+      "url": "https://tia.hubwiz.com/ai-coding-docs/mcp"
+    },
+    "plc-sim": {
+      "type": "streamable-http",
+      "url": "https://tia.hubwiz.com/sim/mcp"
+    },
+    "laddoc": {
+      "type": "streamable-http",
+      "url": "https://tia.hubwiz.com/lad/mcp"
+    },
+    "lad-render": {
+      "type": "streamable-http",
+      "url": "https://tia.hubwiz.com/render/mcp"
+    }
   }
 }
