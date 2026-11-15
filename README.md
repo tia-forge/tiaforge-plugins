@@ -58,6 +58,17 @@ npx skills add tia-forge/tiaforge-plugins
 这条只装**技能**（五个 `SKILL.md`），不带斜杠指令。它读的是本仓的 `.claude-plugin/marketplace.json`，
 所以没有额外目录要求；`npx skills add tia-forge/tiaforge-plugins --list` 可以先看清单再决定装哪个。
 
+### E. 豆包（豆包工作）
+
+豆包也有「插件 · 技能 · 伙伴」，而且是**零审核**的本地路径：传上去自己用，不进商店（商店上架要 ISV 资质）。
+6 个 zip 已挂在 [release](https://github.com/tia-forge/tiaforge-plugins/releases/tag/doubao-1.0)，步骤见 [`doubao/README.md`](./doubao/README.md)：
+
+1. 豆包客户端 → 左侧「插件 · 技能 · 伙伴」→ 技能 → 右上角「+ 添加」→「上传技能」→ 选 zip（不用解压）；
+2. 建议先装 `tia-portal-docs` 和 `tialink-tia-portal`；
+3. 验证：说「连接 http://127.0.0.1:8080/mcp，告诉我现在打开的是哪个工程、有几台设备」——报出你屏幕上的工程名才算接上。
+
+> TiaLink 是本地网关，必须与博途同机；豆包是云端模型，所以要用**桌面客户端**（能访问 `127.0.0.1`）。
+
 ## 里面有什么
 
 | 组件 | 内容 |
