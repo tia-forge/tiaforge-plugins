@@ -11,13 +11,18 @@
 
 ## 零、一次装完（推荐）：上传插件包 —— 6 技能 + 5 个连接
 
-下载 [`tiaforge-doubao-plugin-1.0.1.zip`](https://github.com/tia-forge/tiaforge-plugins/releases/download/doubao-1.0/tiaforge-doubao-plugin-1.0.1.zip)（42 KB）→ 客户端「插件」页 →「+ 添加」→ 上传插件包 → 选 zip，不用解压。
+下载 [`tiaforge-doubao-plugin-1.0.2.zip`](https://github.com/tia-forge/tiaforge-plugins/releases/download/doubao-1.0/tiaforge-doubao-plugin-1.0.2.zip)（41 KB）→ 客户端「插件」页 →「+ 添加」→ 上传插件包 → 选 zip，不用解压。
 
 包里有什么：
 
 - **6 个技能**（`skills/`）
 - **5 个服务连接**（`mcp.json`）：**TiaLink 本机网关** + 文档检索 + 云仿真 + LadDoc + 梯形图渲染
-- **5 份鉴权声明**（`com.doubao/auth/*.json`）：装上后每个服务会问你一次 Key / 令牌（云端四个各 100 次免费）
+- **4 份鉴权声明**（`com.doubao/auth/*.json`）：云端四个服务各问你要一次 Key（每把 100 次免费）
+- **TiaLink 故意不带鉴权文件**：网关默认没开令牌，硬塞一个必填令牌框会让人装完卡住。**只有你的网关开了令牌**，才需要补一个 `com.doubao/auth/tialink.json`：
+  ```json
+  {"credentials":[{"id":"apiKey","label":"TiaLink 令牌","description":"网关控制台 http://localhost:8080/ 里查看","required":true,"secret":true}],
+   "injections":[{"target":"header","name":"Authorization","value":"Bearer ${apiKey}"}]}
+  ```
 
 ### 唯一要改的地方：TiaLink 的 IP
 
@@ -29,6 +34,8 @@
 ```
 
 或者更省事：**直接在对话里说「网关在 192.168.1.110:8080」，它会自己改完并提示你重启**（2026-11-15 原生实测，它还会先把原文件备份一份）。
+
+> ⚠️ 让它自己改的时候，**要说清是豆包的插件配置**。实测有一回它把 tialink 写进了 `C:\Users\<你>\.workbuddy\mcp.json`——那是另一个客户端的配置，豆包读不到。豆包这份在 `…\workspace\plugins\<id>\mcp.json`。
 
 > **改完必须完全退出豆包客户端再打开**，MCP 连接是启动时建立的；不重启的话当前会话认不到 `tialink` 的工具，表现得像没装上。
 

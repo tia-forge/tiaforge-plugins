@@ -66,7 +66,7 @@ npx skills add tia-forge/tiaforge-plugins
 
 豆包有两种扩展，**配合用**：连接器给工具、技能给流程。完整说明见 [`doubao/README.md`](./doubao/README.md)。
 
-- **一次装完**：上传 [`tiaforge-doubao-plugin-1.0.1.zip`](https://github.com/tia-forge/tiaforge-plugins/releases/download/doubao-1.0/tiaforge-doubao-plugin-1.0.1.zip)（插件页 → `+ 添加` → 上传插件包）—— 6 个技能 + **5 个连接**（含 TiaLink）+ 鉴权声明；TiaLink 默认 `127.0.0.1:8080`，网关在别的机器就改 `mcp.json` 里的 IP
+- **一次装完**：上传 [`tiaforge-doubao-plugin-1.0.2.zip`](https://github.com/tia-forge/tiaforge-plugins/releases/download/doubao-1.0/tiaforge-doubao-plugin-1.0.2.zip)（插件页 → `+ 添加` → 上传插件包）—— 6 个技能 + **5 个连接**（含 TiaLink）+ 鉴权声明；TiaLink 默认 `127.0.0.1:8080`，网关在别的机器就改 `mcp.json` 里的 IP
 - 若这版客户端拒收带 `127.0.0.1` 的包，改用 [`1.0.0`](https://github.com/tia-forge/tiaforge-plugins/releases/download/doubao-1.0/tiaforge-doubao-plugin-1.0.0.zip)（4 个云服务），再手工加一条 TiaLink 连接器（`http://127.0.0.1:8080/mcp` 或 `npx -y tialink-mcp`）
 
 - **装插件包（推荐）**：插件页 → `+ 添加` → 上传插件包 → 选上面的 zip（6 技能 + 4 云连接一次装完）
