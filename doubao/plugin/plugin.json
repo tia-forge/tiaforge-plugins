@@ -1,6 +1,6 @@
 {
   "name": "tiaforge",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "让豆包读写西门子博途（TIA Portal）工程：查文档、生成梯形图、导入前先看图、云端逐扫描仿真。",
   "extensions": {
     "com.doubao": {

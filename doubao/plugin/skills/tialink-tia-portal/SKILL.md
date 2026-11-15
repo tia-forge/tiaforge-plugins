@@ -9,6 +9,8 @@ license: CC-BY-4.0
 tags: [博途, 博图, TIA Portal, SCL, 西门子, PLC, Openness, 自动化]
 homepage: https://tia.hubwiz.com/tia-link?utm_source=dsh&utm_medium=plugin
 metadata:
+  display_name: 博途工程直连
+  display_description: 操作西门子 TIA Portal 工程：读块清单、建 FB/FC/DB、写 SCL、编译、下载到仿真、读回核对；也能只读地把老工程反推成文档。
   publisher: 汇智网 (hubwiz.com)
   homepage: https://tia.hubwiz.com/tia-link?utm_source=dsh&utm_medium=plugin
   repository: https://github.com/tia-forge/tialink

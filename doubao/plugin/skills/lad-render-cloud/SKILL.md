@@ -9,6 +9,8 @@ license: CC-BY-4.0
 tags: [梯形图, LAD, SimaticML, 渲染, PNG, 博途, 博图, PLC, MCP]
 homepage: https://tia.hubwiz.com/render/?utm_source=dsh&utm_medium=plugin
 metadata:
+  display_name: 梯形图渲染
+  display_description: 把 SimaticML 渲染成 PNG，导入博途前先看一眼逻辑长什么样（按次计费）。
   publisher: 汇智网 (hubwiz.com)
   transport: MCP Streamable HTTP（https://tia.hubwiz.com/render/mcp + API Key）
   tools: render_version（不计费）, render_simaticml

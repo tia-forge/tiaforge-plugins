@@ -9,6 +9,8 @@ license: CC-BY-4.0
 tags: [博途, 博图, TIA Portal, 西门子, PLC, PLC编程, 学习, 教程, 一对一, 训练, SCL, 梯形图]
 homepage: https://tia.hubwiz.com/learn-lad/ai/?utm_source=dsh&utm_medium=plugin
 metadata:
+  display_name: PLC 编程教练
+  display_description: 一对一训练：按判据判 PASS/FAIL，卡住只给提示、不代写代码。
   publisher: 汇智网 (hubwiz.com)
   packaging: 独立技能（不依赖其他技能，可单独安装）
   related-skills: tialink-tia-portal（真实工程里编译/下载/读回）、plc-cloud-sim（不装博途跑用例）、tia-portal-docs（指令参数与版本行为）、laddoc-cloud（梯形图交付）、lad-render-cloud（导入前看图）、plc-program-design（做完整项目时用）——均为可选，不装也能走完 L0–L3

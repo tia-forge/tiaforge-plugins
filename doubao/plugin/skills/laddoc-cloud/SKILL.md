@@ -9,6 +9,8 @@ license: CC-BY-4.0
 tags: [梯形图, LAD, 博途, 博图, SimaticML, PLC, 代码生成]
 homepage: https://tia.hubwiz.com/lad?utm_source=dsh&utm_medium=plugin
 metadata:
+  display_name: LadDoc 转 SimaticML
+  display_description: 把 JSON 格式的梯形图（LadDoc）转成可导入博途的 SimaticML。
   publisher: 汇智网 (hubwiz.com)
   transport: MCP Streamable HTTP（https://tia.hubwiz.com/lad/mcp + API Key）
   tools: lad_version（不计费）, lad_validate, lad_generate
