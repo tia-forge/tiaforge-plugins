@@ -9,48 +9,18 @@
 
 ---
 
-## 零、一次装完（推荐）：上传插件包 —— 6 技能 + 5 个连接
+## 零、一次装完：上传插件包（6 技能 + 4 个云连接）
 
-下载 [`tiaforge-doubao-plugin-1.0.3.zip`](https://github.com/tia-forge/tiaforge-plugins/releases/download/doubao-1.0/tiaforge-doubao-plugin-1.0.3.zip)（41 KB）→ 客户端「插件」页 →「+ 添加」→ 上传插件包 → 选 zip，不用解压。
+下载 [`tiaforge-doubao-plugin-1.0.4.zip`](https://github.com/tia-forge/tiaforge-plugins/releases/download/doubao-1.0/tiaforge-doubao-plugin-1.0.4.zip)（41 KB）→ 客户端「插件」页 →「+ 添加」→ 上传插件包 → 选 zip，不用解压。
+
+> **先卸载旧的 Tiaforge 再装**（同 `name` 的两个包会打架）；装完**完全退出豆包再打开**。
 
 包里有什么：
 
 - **6 个技能**（`skills/`，界面显示中文名：博途工程直连 / 博途文档检索 / LadDoc 转 SimaticML / 梯形图渲染 / PLC 云仿真 / PLC 编程教练）
-- **5 个服务连接**（`mcp.json`）：**TiaLink 本机网关** + 文档检索 + 云仿真 + LadDoc + 梯形图渲染
-- **4 份鉴权声明**（`com.doubao/auth/*.json`）：云端四个服务各问你要一次 Key（每把 100 次免费）
-- **TiaLink 故意不带鉴权文件**：网关默认没开令牌，硬塞一个必填令牌框会让人装完卡住。**只有你的网关开了令牌**，才需要补一个 `com.doubao/auth/tialink.json`：
-  ```json
-  {"credentials":[{"id":"apiKey","label":"TiaLink 令牌","description":"网关控制台 http://localhost:8080/ 里查看","required":true,"secret":true}],
-   "injections":[{"target":"header","name":"Authorization","value":"Bearer ${apiKey}"}]}
-  ```
+- **4 个云连接**（`mcp.json`）+ **4 份鉴权声明**：文档检索 / 云仿真 / LadDoc / 梯形图渲染，每个问你要一次 Key（各 100 次免费）
 
-### 唯一要改的地方：TiaLink 的 IP
-
-包里的 TiaLink 默认写 `http://127.0.0.1:8080/mcp`。**网关不在你这台机器上时，把它改成那台 Windows 的局域网 IP**，例如 `http://192.168.1.110:8080/mcp`：
-
-```
-…\workspace\plugins\<id>\mcp.json      ← 改这一行
-…\workspace\plugins\<id>\plugin.json   ← 只改 IP 的话这里不用动
-```
-
-或者更省事：**直接在对话里说「网关在 192.168.1.110:8080」，它会自己改完并提示你重启**（2026-11-15 原生实测，它还会先把原文件备份一份）。
-
-> ⚠️ 让它自己改的时候，**要说清是豆包的插件配置**。实测有一回它把 tialink 写进了 `C:\Users\<你>\.workbuddy\mcp.json`——那是另一个客户端的配置，豆包读不到。豆包这份在 `…\workspace\plugins\<id>\mcp.json`。
-
-> **改完必须完全退出豆包客户端再打开**，MCP 连接是启动时建立的；不重启的话当前会话认不到 `tialink` 的工具，表现得像没装上。
-
-
-### 为什么"地址每次都要重讲"（三个原因，按概率排）
-
-| # | 原因 | 30 秒怎么判 | 怎么修 |
-|---|---|---|---|
-| **1** | **改完没重启客户端**。MCP 连接在**启动时**建立，改完文件当前会话就是看不到工具 | 会话里没有 `tialink` 开头的工具、只有它现场用命令/curl 连 | 完全退出豆包（托盘也退）再打开，然后**新开一个任务** |
-| **2** | **手改的是包内副本，启动时被还原**（插件来自 zip，`…"+BS+"workspace"+BS+"plugins"+BS+"<id>"+BS+"mcp.json` 属于包） | 重启后那个连接器的 URL 又变回 `127.0.0.1:8080` | 别改包。**网关不在本机**的人，把包里那条 tialink 关掉，改用「+ 添加 → 新建自定义连接器」加一条 `http://<网关IP>:8080/mcp` —— 自定义连接器是**用户级配置**，重启不丢 |
-| **3** | **改错了文件**（写到 `~"+BS+".workbuddy"+BS+"mcp.json` 或 `~"+BS+".pi"+BS+"agent"+BS+"mcp.json`） | 那些文件里有 `tialink`，但豆包的连接器列表里 URL 没变 | 豆包只读自己的插件目录与自定义连接器；把别处的 tialink 删掉，免得以后误判 |
-
-> 一句话：**本机网关 → 用包里那条（127.0.0.1）；跨机网关 → 用自定义连接器。** 包内那条是随包配置，不适合当"长期可改"的地方。
-
-> 如果这一版客户端拒绝带 `127.0.0.1` 的包（部分版本会按公网规则校验），用 [`1.0.0`](https://github.com/tia-forge/tiaforge-plugins/releases/download/doubao-1.0/tiaforge-doubao-plugin-1.0.0.zip)（只有 4 个云服务），再按下面第一节手工加一条 TiaLink。
+⚠️ **包里不带 TiaLink**，原因见下一节 —— 它是本机/局域网地址，写进包会被客户端丢掉。
 
 ---
 
