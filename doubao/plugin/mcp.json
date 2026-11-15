@@ -1,5 +1,9 @@
 {
   "mcpServers": {
+    "tialink": {
+      "type": "streamable-http",
+      "url": "http://192.168.1.110:8080/mcp"
+    },
     "tia-docs": {
       "type": "streamable-http",
       "url": "https://tia.hubwiz.com/ai-coding-docs/mcp"
