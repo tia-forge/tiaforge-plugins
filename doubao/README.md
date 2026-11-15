@@ -11,11 +11,11 @@
 
 ## 零、一次装完（推荐）：上传插件包 —— 6 技能 + 5 个连接
 
-下载 [`tiaforge-doubao-plugin-1.0.2.zip`](https://github.com/tia-forge/tiaforge-plugins/releases/download/doubao-1.0/tiaforge-doubao-plugin-1.0.2.zip)（41 KB）→ 客户端「插件」页 →「+ 添加」→ 上传插件包 → 选 zip，不用解压。
+下载 [`tiaforge-doubao-plugin-1.0.3.zip`](https://github.com/tia-forge/tiaforge-plugins/releases/download/doubao-1.0/tiaforge-doubao-plugin-1.0.3.zip)（41 KB）→ 客户端「插件」页 →「+ 添加」→ 上传插件包 → 选 zip，不用解压。
 
 包里有什么：
 
-- **6 个技能**（`skills/`）
+- **6 个技能**（`skills/`，界面显示中文名：博途工程直连 / 博途文档检索 / LadDoc 转 SimaticML / 梯形图渲染 / PLC 云仿真 / PLC 编程教练）
 - **5 个服务连接**（`mcp.json`）：**TiaLink 本机网关** + 文档检索 + 云仿真 + LadDoc + 梯形图渲染
 - **4 份鉴权声明**（`com.doubao/auth/*.json`）：云端四个服务各问你要一次 Key（每把 100 次免费）
 - **TiaLink 故意不带鉴权文件**：网关默认没开令牌，硬塞一个必填令牌框会让人装完卡住。**只有你的网关开了令牌**，才需要补一个 `com.doubao/auth/tialink.json`：
