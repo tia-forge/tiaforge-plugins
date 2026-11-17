@@ -1,4 +1,4 @@
-# TIA Forge：把博途交给 AI 客户端
+# TIA Forge 插件市场（WorkBuddy）
 
 [![skills.sh](https://www.skills.sh/b/tia-forge/tiaforge-plugins)](https://www.skills.sh/tia-forge/tiaforge-plugins)
 
@@ -9,10 +9,6 @@
 ```
 
 ## 装法（先试界面，界面走不通再用命令行）
-
-**按你的客户端装：** [WorkBuddy](#a-桌面端界面装推荐三下点完) ｜ [DSH](./dsh-plugin) ｜ [豆包](./doubao/README.md) ｜ [pi](./pi-plugin) ｜ [Claude Code / Cursor / Codex](#d-其他-skill-客户端claude-code--cursor--codex--cline-等)
-
-
 
 ### A. 桌面端界面装（推荐，三下点完）
 
@@ -62,20 +58,6 @@ npx skills add tia-forge/tiaforge-plugins
 这条只装**技能**（五个 `SKILL.md`），不带斜杠指令。它读的是本仓的 `.claude-plugin/marketplace.json`，
 所以没有额外目录要求；`npx skills add tia-forge/tiaforge-plugins --list` 可以先看清单再决定装哪个。
 
-### E. 豆包（豆包工作）
-
-豆包有两种扩展，**配合用**：连接器给工具、技能给流程。完整说明见 [`doubao/README.md`](./doubao/README.md)。
-
-- **一次装完**：上传 [`tiaforge-doubao-plugin-1.0.5.zip`](https://github.com/tia-forge/tiaforge-plugins/releases/download/doubao-1.0/tiaforge-doubao-plugin-1.0.5.zip)（插件页 → `+ 添加` → 上传插件包）—— 6 个技能 + **5 个连接**（含 TiaLink）+ 鉴权声明；TiaLink 默认 `127.0.0.1:8080`，网关在别的机器就改 `mcp.json` 里的 IP
-- 若这版客户端拒收带 `127.0.0.1` 的包，改用 [`1.0.0`](https://github.com/tia-forge/tiaforge-plugins/releases/download/doubao-1.0/tiaforge-doubao-plugin-1.0.0.zip)（4 个云服务），再手工加一条 TiaLink 连接器（`http://127.0.0.1:8080/mcp` 或 `npx -y tialink-mcp`）
-
-- **装插件包（推荐）**：插件页 → `+ 添加` → 上传插件包 → 选上面的 zip（6 技能 + 4 云连接一次装完）
-- **再补一条连接器**：插件页 → `+ 添加` → 新建自定义连接器 → HTTP：`http://127.0.0.1:8080/mcp` + `Authorization: Bearer <token>`（这是 TiaLink，规范不允许写进插件包）
-- **备选（散装）**：技能页 → 上传技能 → 选 [release](https://github.com/tia-forge/tiaforge-plugins/releases/tag/doubao-1.0) 里的单个 zip
-- **验证**：说「连接 http://127.0.0.1:8080/mcp，告诉我现在打开的是哪个工程、有几台设备」——报得出你屏幕上的工程名才算接上
-
-> TiaLink 是本地网关，必须与博途同机；豆包是云端模型，所以要用**桌面客户端**（能访问 `127.0.0.1`）。
-
 ## 里面有什么
 
 | 组件 | 内容 |
@@ -91,7 +73,7 @@ npx skills add tia-forge/tiaforge-plugins
 
 | 需要什么 | 说明 |
 |---|---|
-| TiaLink 网关 | Windows + 博途 **V19 / V20 / V21** + 账号在 `Siemens TIA Openness` 组；未授权时**只读可用** |
+| TiaLink 网关 | Windows + 博途 **V17 / V18 / V19 / V20 / V21** + 账号在 `Siemens TIA Openness` 组；未授权时**只读可用** |
 | 云端四个服务 | `tia-portal-docs` / `laddoc-cloud` / `lad-render-cloud` / `plc-cloud-sim` 各自需要 API Key（微信扫码，各 100 次免费；render 每次渲染扣 1 次），见各技能正文第 1 节 |
 | 令牌 | `tialink` 的地址与令牌由插件在启用时询问（`userConfig`），令牌不写进 `settings.json`；网关没开鉴权时留空 |
 

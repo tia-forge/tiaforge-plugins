@@ -3,6 +3,10 @@
 把 TIA Forge 的**五个工具技能 + 一个学习教练**和**五个 MCP 端点**打成**一个组合包（bundle）**：
 装一次，DSH 里就有「查文档 → 生成梯形图 → 看图核对 → 跑仿真 → 操作真实工程」这条链。
 
+> **汇智网（hubwiz.com）出品。** 装完看不到工具不是坏了：五个服务里有四个要 API Key，没配不报错、只是对应工具不出现。
+> 每把 100 次免费，微信扫码即领：[文档检索](https://tia.hubwiz.com/ai-coding-docs?utm_source=dsh&utm_medium=readme)｜[云仿真](https://tia.hubwiz.com/sim?utm_source=dsh&utm_medium=readme)｜[LadDoc](https://tia.hubwiz.com/lad?utm_source=dsh&utm_medium=readme)｜[梯形图渲染](https://tia.hubwiz.com/render?utm_source=dsh&utm_medium=readme)
+> 要操作真实的博途工程，另装 [TiaLink 博途 MCP 网关](https://tia.hubwiz.com/tia-link?utm_source=dsh&utm_medium=readme)（Windows + 博途 V17 / V18 / V19 / V20 / V21）。
+
 > **为什么需要它**：DSH 本身支持 skill（`ctx.skills` + 文件系统提供方，扫 `<project>/.dsh/skills`、`.agents/skills`、`~/.dsh/skills`），
 > 但**没有 `dsh skill add` 这类命令** —— skill 只能靠"把文件放到扫描目录"或"插件注册"进来。
 > 这个包用后者：`index.js` 在 `apply()` 里读包内 `skills/*/SKILL.md`，直接 `ctx.skills.register()`。
@@ -34,7 +38,7 @@ dsh plugin --profile web add github:tia-forge/tiaforge-plugins#path:dsh-plugin
 
 | 类型 | 名称 | 说明 |
 |---|---|---|
-| 技能 | `tialink-tia-portal` | AI 操作博途工程（V19 / V20 / V21；未授权只读） |
+| 技能 | `tialink-tia-portal` | AI 操作博途工程（V17 / V18 / V19 / V20 / V21；未授权只读） |
 | 技能 | `plc-cloud-sim` | 云端逐扫描仿真 + 场景 PASS/FAIL |
 | 技能 | `laddoc-cloud` | LadDoc → 博途可导入 SimaticML |
 | 技能 | `lad-render-cloud` | SimaticML → PNG，导入前先看一眼（**计费**，每次渲染扣 1 次） |
@@ -94,6 +98,8 @@ export TIA_RENDER_KEY=...   # 唯一计费的：每次渲染扣 1 次，先扣�
 | `TIA_SIM_KEY` | `/sim/mcp` | 100 次 | `plc-cloud-sim` |
 | `TIA_LAD_KEY` | `/lad/mcp` | 100 次 | `laddoc-cloud` |
 | `TIA_RENDER_KEY` | `/render/mcp` | 100 次 | `lad-render-cloud`（`render_version` 免费，渲染扣 1） |
+
+四把 Key 的领取地址：[/ai-coding-docs](https://tia.hubwiz.com/ai-coding-docs?utm_source=dsh&utm_medium=readme)｜[/sim](https://tia.hubwiz.com/sim?utm_source=dsh&utm_medium=readme)｜[/lad](https://tia.hubwiz.com/lad?utm_source=dsh&utm_medium=readme)｜[/render](https://tia.hubwiz.com/render?utm_source=dsh&utm_medium=readme)。微信扫码登录后到控制台点「更换密钥」，**Key 只显示这一次**，立刻复制；填完必须完全退出 DSH 再打开。
 
 不配的话对应 MCP 不出现工具（没 Key = `initialize` 就 401），但**技能仍然可用**（技能正文本身就是可读的知识，不依赖工具）。
 `TIA_RENDER_KEY` 不配也不会白扣额度——这一点跟另三个一样，靠 key 门控。

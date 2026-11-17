@@ -2,17 +2,19 @@
 name: laddoc-cloud
 slug: laddoc-cloud
 displayName: 梯形图生成（博途可导入）
-version: 1.0.8
-summary: 让 AI 直接产出「能导入博途」的梯形图块：写 LadDoc（JSON 格式的 PLC 梯形图文档）→ 按 lad-ir D9 规则校验 → 确定性生成 V19 SimaticML（FC/FB/OB）。有 issue 就不出 XML，避免导入被拒。
-description: 把 LadDoc（JSON 格式的 PLC 梯形图文档）校验后确定性生成为 TIA Portal V19 可直接导入的 SimaticML 块（FC/FB/OB）。当用户要"用 AI 生成梯形图块"、"让 AI 写 LAD 并导入博途"、"LadDoc 校验/生成 SimaticML"、"批量生成 PLC 块"时使用。不需要博途即可生成，导入时才需要博途 V19。 In English — generate TIA Portal V19-importable SimaticML blocks (FC/FB/OB) deterministically from LadDoc — a JSON document describing ladder logic — after validating it first, so no XML is emitted while issues remain. Use to have an AI write ladder logic (LAD), validate LadDoc, or batch-generate PLC blocks before importing them into TIA Portal.
+version: 1.0.9
+summary: 让 AI 直接产出「能导入博途」的梯形图块：写 LadDoc（JSON 格式的 PLC 梯形图文档）→ 按 lad-ir D9 规则校验 → 确定性生成 V17 格式 SimaticML（FC/FB/OB，V17–V21 都能导入）。有 issue 就不出 XML，避免导入被拒。
+description: 把 LadDoc（JSON 格式的 PLC 梯形图文档）校验后确定性生成为 TIA Portal V17 起可直接导入的 SimaticML 块（FC/FB/OB）。当用户要"用 AI 生成梯形图块"、"让 AI 写 LAD 并导入博途"、"LadDoc 校验/生成 SimaticML"、"批量生成 PLC 块"时使用。不需要博途即可生成，导入时才需要博途 V17 及以上。 In English — generate TIA Portal V17+ importable SimaticML blocks (FC/FB/OB) deterministically from LadDoc — a JSON document describing ladder logic — after validating it first, so no XML is emitted while issues remain. Use to have an AI write ladder logic (LAD), validate LadDoc, or batch-generate PLC blocks before importing them into TIA Portal.
 license: CC-BY-4.0
 tags: [梯形图, LAD, 博途, 博图, SimaticML, PLC, 代码生成]
 homepage: https://tia.hubwiz.com/lad?utm_source=dsh&utm_medium=plugin
 metadata:
+  display_name: LadDoc 转 SimaticML
+  display_description: 把 JSON 格式的梯形图（LadDoc）转成可导入博途的 SimaticML。
   publisher: 汇智网 (hubwiz.com)
   transport: MCP Streamable HTTP（https://tia.hubwiz.com/lad/mcp + API Key）
   tools: lad_version（不计费）, lad_validate, lad_generate
-  output: TIA Portal V19 SimaticML（<SW.Blocks.FC|FB|OB>）
+  output: TIA Portal V17 SimaticML（<SW.Blocks.FC|FB|OB>；V17–V21 均可导入）
   billing: 新用户 100 次免费；之后按额度包（1000 次 ¥9.90 起）
 ---
 
@@ -48,7 +50,7 @@ metadata:
 |---|---|---|
 | 1 | **微信扫码登录**拿 API Key | 扫码即开通；Key 只存哈希，明文只显示一次 |
 | 2 | 客户端支持 **Streamable HTTP + header** | 端点 `https://tia.hubwiz.com/lad/mcp` |
-| 3 | **LadDoc 会上传云端；生成的是 V19 文档** | 机密工程不要用（改用本地 TiaLink）；V20/V21 尚未逐版本验证，导入端要自己确认 |
+| 3 | **LadDoc 会上传云端；生成的是 V17 格式文档（V17–V21 都能导入）** | 机密工程不要用（改用本地 TiaLink）；导入端仍建议先在仿真里过一遍 |
 
 ## 2. 连接
 
@@ -99,7 +101,7 @@ valid=true 之后再调 lad_generate，把返回的 XML 存成 .xml，并告诉�
 - 这份 XML 对应的 LadDoc 的 schemaVersion。
 
 第五步：导入与核对（人工）
-我在博途 V19 里导入该 XML，然后：
+我在博途里导入该 XML（V17–V21 均可），然后：
 1) 读回块接口，与 LadDoc 里的接口逐项对照；
 2) 编译，把编译输出原文贴给我；
 3) 编译不过就把错误原文反馈给你，你只改 LadDoc，不手改 XML。

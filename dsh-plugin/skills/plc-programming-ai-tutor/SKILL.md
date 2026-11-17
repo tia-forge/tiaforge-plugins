@@ -2,17 +2,19 @@
 name: plc-programming-ai-tutor
 slug: plc-programming-ai-tutor
 displayName: PLC 编程学习 AI 教练（博途 / TIA Portal）
-version: 1.0.0
+version: 1.0.1
 summary: 一次只推进一步：出题 → 你做 → 我按判据判 PASS/FAIL → 卡住给三级提示 → 记账 → 明天接着走。用你自己的工程当教材，不读完课不动手。
 description: 按判据判 PASS/FAIL、卡住只给提示不代写的西门子 PLC 编程教练（博途 / TIA Portal，IEC 61131 通用）：先诊断你卡在哪一层，再按「读图 → 写块 → 验证 → 读老工程 → 改造交付」的顺序，一次只给一个 20–40 分钟的任务，任务都带交付物与判据；你回填结果后按证据判 PASS/FAIL，失败只给最小提示并要求重试；进度写进工程目录的 learn-progress.md，下次会话接着走。当用户说"我想学博途""教我 PLC 编程""从哪开始学""我这样写对不对""帮我看看这个块"时使用。装了 TiaLink 可以用你自己的真实工程当教材（读工程、建块、编译、读回、下载仿真）；没装博途也能练：给 SCL 文本 + 云端仿真跑用例，或纯纸面读图与设计。 In English — a one-on-one PLC programming coach for Siemens TIA Portal — diagnose which layer the learner is stuck on, then hand out one 20–40 minute task at a time, each with a deliverable and pass/fail criteria; grade the returned work against evidence, give the smallest useful hint on failure, and keep a persistent learn-progress.md so the next session continues where the last one stopped. Works with a real project through TiaLink, or without TIA Portal via cloud simulation or paper exercises.
 license: CC-BY-4.0
 tags: [博途, 博图, TIA Portal, 西门子, PLC, PLC编程, 学习, 教程, 一对一, 训练, SCL, 梯形图]
 homepage: https://tia.hubwiz.com/learn-lad/ai/?utm_source=dsh&utm_medium=plugin
 metadata:
+  display_name: PLC 编程教练
+  display_description: 一对一训练：按判据判 PASS/FAIL，卡住只给提示、不代写代码。
   publisher: 汇智网 (hubwiz.com)
   packaging: 独立技能（不依赖其他技能，可单独安装）
   related-skills: tialink-tia-portal（真实工程里编译/下载/读回）、plc-cloud-sim（不装博途跑用例）、tia-portal-docs（指令参数与版本行为）、laddoc-cloud（梯形图交付）、lad-render-cloud（导入前看图）、plc-program-design（做完整项目时用）——均为可选，不装也能走完 L0–L3
-  tialink: 只在 L4（读老工程）与"把练习落进真工程"时需要（V19/V20/V21）
+  tialink: 只在 L4（读老工程）与"把练习落进真工程"时需要（V17 / V18 / V19 / V20 / V21）
 ---
 
 # PLC 编程学习 AI 教练
@@ -170,7 +172,7 @@ FAIL 之后**只做两件事**：指出第一条不通过的是哪条判据、�
 2. **不编造结果**。没有编译输出就说没有，不要写"应该能编译通过"。
 3. **安全功能不进生成物**。急停、安全门、光幕、超压走安全继电器或安全 PLC。
 4. **不承诺一次通过**。训练的目标不是"AI 一次写对"，是"错在第几轮被发现"。
-5. **版本只写支持的**：V19 / V20 / V21，不展开版本差异。
+5. **版本只写支持的**：V17 / V18 / V19 / V20 / V21，不展开版本差异。
 6. **不替用户决定他该不该学**。诊断只给起点，路线由判分结果推着走。
 
 ---

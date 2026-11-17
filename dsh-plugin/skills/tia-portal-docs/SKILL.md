@@ -9,6 +9,8 @@ license: CC-BY-4.0
 tags: [博途, 博图, TIA Portal, 西门子, 指令, 文档, SCL, 数据类型]
 homepage: https://tia.hubwiz.com/ai-coding-docs?utm_source=dsh&utm_medium=plugin
 metadata:
+  display_name: 博途文档检索
+  display_description: 按关键词检索西门子博途编程文档与指令说明（2 800+ 章节），回答前先查再答。
   publisher: 汇智网 (hubwiz.com)
   transport: MCP Streamable HTTP（https://tia.hubwiz.com/ai-coding-docs/mcp，协议 2025-03-26）
   tools: get_docs（library=tia-programming@1.0, topic=问题）

@@ -29,7 +29,7 @@ Siemens TIA Portal (博途) automation for Claude Code: five tool skills, one le
 | Need | Detail |
 |---|---|
 | Claude Code | Skills and slash commands load in any Claude Code session. |
-| TiaLink gateway (optional) | Only the `tialink` MCP needs it: Windows 64-bit, a licensed TIA Portal **V19 / V20 / V21**, the Windows account in the local *Siemens TIA Openness* group, and the TiaLink gateway itself (paid software, 汇智网). Read-only without a licence. |
+| TiaLink gateway (optional) | Only the `tialink` MCP needs it: Windows 64-bit, a licensed TIA Portal **V17 / V18 / V19 / V20 / V21**, the Windows account in the local *Siemens TIA Openness* group, and the TiaLink gateway itself (paid software, 汇智网). Read-only without a licence. |
 | Cloud API keys (optional) | Each of the four cloud skills needs its own key from <https://tia.hubwiz.com> (100 free runs each; render is metered per image). Get only the ones you use. |
 
 Nothing else is required: without a gateway or keys the plugin still loads, and only the parts you configured will work.

@@ -9,6 +9,8 @@ license: CC-BY-4.0
 tags: [梯形图, SCL, 仿真, 博途, 博图, PLC, 测试, 回归]
 homepage: https://tia.hubwiz.com/sim?utm_source=workbuddy-plugin&utm_medium=plugin
 metadata:
+  display_name: PLC 云仿真
+  display_description: 在云端逐扫描运行梯形图逻辑，按场景给出 PASS/FAIL。
   publisher: 汇智网 (hubwiz.com)
   transport: MCP Streamable HTTP（https://tia.hubwiz.com/sim/mcp + API Key）
   tools: lad_validate, lad_simulate, lad_run_scenario, scl_validate, scl_simulate, scl_run_scenario
